@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,7 +29,8 @@ namespace AccioInventory
 
             };
 
-           
+                this.label1.Image = new Bitmap(global::AccioInventory.Properties.Resources.acció_400x400_1, this.label1.Size);
+
         }
 
         private Control SetMyFooter()
@@ -38,7 +40,7 @@ namespace AccioInventory
                 footParent.Location = new Point(0, this.Height - 60);
                 footParent.Size = new Size(this.Width, 60);
             };
-            Label inf = new Label { Size = footParent.Size, Location = new Point(5,4), Text = "This project mainly developed by Eng.Ahmed T -- Haam Limited Co. 2022." };
+            System.Windows.Forms.Label inf = new System.Windows.Forms.Label { Size = footParent.Size, Location = new Point(5,4), Text = "This project mainly developed by Eng.Ahmed T -- Haam Limited Co. 2022." };
             footParent.Controls.Add(inf);
                 return footParent;
         }
@@ -61,5 +63,6 @@ namespace AccioInventory
 
         }
 
+        
     }
 }
