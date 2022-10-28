@@ -5,3 +5,7 @@ Welcome to Accio open source inventory system written to simplify all store need
   margin-right: auto;"></a>
 
 </br>
+Preview
+</br></br>
+
+<a href="https://ibb.co/fXKxrHT"><img src="https://i.ibb.co/kGrSqXP/Screenshot-64.png" alt="Screenshot-64" border="0"></a>
