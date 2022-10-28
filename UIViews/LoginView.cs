@@ -15,6 +15,9 @@ namespace AccioInventory.UIViews
         public static bool verified = false;
         public static bool admin = false;
         private Form parentForm = null;
+
+        private System.Windows.Forms.Timer myTimer_showReaction = new System.Windows.Forms.Timer();
+
         public LoginView(Form parent)
         {
             InitializeComponent();
@@ -41,9 +44,38 @@ namespace AccioInventory.UIViews
                     parentForm.Visible = true;
                 }
             }
+            else
+            {
+                this.label6.Text = "Faild to login";
+                this.label6.ForeColor = Color.Red;
+
+                myTimer_showReaction.Tick += new EventHandler((ob, ev) => {
+                   
+
+                    if (this.label6.Text.StartsWith("Fail"))
+                    {
+                        // Restarts the timer and increments the counter.
+
+                        
+                        this.label6.Text = "...";
+                        this.label6.ForeColor = Color.Black;
+                        myTimer_showReaction.Stop();
+                    }
+                   
+                });
+
+                // Sets the timer interval to 5 seconds.
+                myTimer_showReaction.Interval = 5000;
+                myTimer_showReaction.Start();
+            }
 
            
 
+
+        }
+
+        private void tableLayoutPanel3_Paint(object sender, PaintEventArgs e)
+        {
 
         }
     }

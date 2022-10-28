@@ -16,6 +16,8 @@ namespace AccioInventory
     public partial class Accio : Form
     {
         private bool logged = false;
+        private static System.Windows.Forms.Timer myTimer_showAccio = new System.Windows.Forms.Timer();
+        private static Form loginForm = null;
         public Accio()
         {
             InitializeComponent();
@@ -33,7 +35,27 @@ namespace AccioInventory
 
             this.label1.Image = new Bitmap(global::AccioInventory.Properties.Resources.acció_400x400_1, this.label1.Size);
 
-             
+
+            myTimer_showAccio.Tick += new EventHandler((o, e) => {
+                myTimer_showAccio.Stop();
+
+                if (!Visible)
+                {
+                    // Restarts the timer and increments the counter.
+
+                    myTimer_showAccio.Enabled = true;
+                }
+                else
+                {
+                    loginForm.Dispose();
+
+                }
+            });
+
+            // Sets the timer interval to 5 seconds.
+            myTimer_showAccio.Interval = 1000;
+            myTimer_showAccio.Start();
+
             Accio.InputBox(this);
         }
 
@@ -71,7 +93,7 @@ namespace AccioInventory
         {
             //show login..
             var loginview = new LoginView(fr);
-            Form loginForm = new Form { Size = loginview.Size };
+            loginForm = new Form { Size = loginview.Size };
             loginForm.Controls.Add(loginview);
             loginForm.MinimizeBox = false;
             loginForm.MaximizeBox = false;
@@ -79,27 +101,37 @@ namespace AccioInventory
             loginForm.FormBorderStyle = FormBorderStyle.FixedDialog;
             loginForm.Text = "Welcome to accio system.";
 
+
             DialogResult dialogResult = loginForm.ShowDialog();
-            
+
+
+
 
             if (dialogResult == DialogResult.Cancel)
             {
-                Environment.Exit(0);
+                if(!fr.Visible)
+                     Environment.Exit(0);
             }
-            else if(dialogResult == DialogResult.Abort)
+            if(dialogResult == DialogResult.Abort)
             {
-                Environment.Exit(0);  
+                if (!fr.Visible)
+                    Environment.Exit(0);  
             }
+
+
+          
+            /*
             //instead you can create a timer to collect main form visiblity data then take an action...
             else if (dialogResult == DialogResult.OK && LoginView.verified)
             {
                 loginForm.Visible = false;
                 loginForm.Dispose();
             }
-             
+             */
             return dialogResult;
         }
 
-
+        
     }
+
 }
