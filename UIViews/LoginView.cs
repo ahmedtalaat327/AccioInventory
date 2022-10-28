@@ -15,6 +15,9 @@ namespace AccioInventory.UIViews
         public LoginView()
         {
             InitializeComponent();
+
+            this.label1.Image = new Bitmap(global::AccioInventory.Properties.Resources.acció_400x400_1, this.label1.Size);
+
         }
     }
 }

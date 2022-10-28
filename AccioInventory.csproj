@@ -39,6 +39,10 @@
     <ApplicationIcon>acció-400x400-1.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Oracle.DataAccess, Version=2.112.3.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>resources\libs\Oracle.DataAccess.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -99,6 +103,7 @@
     <Content Include="acció-400x400-1.ico" />
     <Content Include="resources\imgs\acció-400x400-1.ico" />
     <Content Include="resources\imgs\acció-400x400-1.jpg" />
+    <Content Include="resources\libs\Oracle.DataAccess.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

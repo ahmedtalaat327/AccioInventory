@@ -42,7 +42,6 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.label2 = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -53,6 +52,7 @@
             this.newInvoiceForRFMToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.accioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -156,17 +156,6 @@
             this.button1.Text = "Cards";
             this.button1.UseVisualStyleBackColor = true;
             // 
-            // label1
-            // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.label1.Image = global::AccioInventory.Properties.Resources.acció_400x400_1;
-            this.label1.Location = new System.Drawing.Point(3, 329);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(45, 42);
-            this.label1.TabIndex = 4;
-            this.label1.Text = ".";
-            // 
             // tableLayoutPanel3
             // 
             this.tableLayoutPanel3.BackColor = System.Drawing.SystemColors.Info;
@@ -258,6 +247,17 @@
             this.accioToolStripMenuItem.Size = new System.Drawing.Size(104, 22);
             this.accioToolStripMenuItem.Text = "Accio";
             // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.label1.Image = global::AccioInventory.Properties.Resources.acció_400x400_1;
+            this.label1.Location = new System.Drawing.Point(3, 329);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(45, 42);
+            this.label1.TabIndex = 4;
+            this.label1.Text = ".";
+            // 
             // Accio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -268,6 +268,7 @@
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
+            this.MinimumSize = new System.Drawing.Size(500, 300);
             this.Name = "Accio";
             this.Text = "Accio";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

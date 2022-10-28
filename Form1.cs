@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AccioInventory.UIViews;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,6 +15,7 @@ namespace AccioInventory
 {
     public partial class Accio : Form
     {
+        private bool logged = false;
         public Accio()
         {
             InitializeComponent();
@@ -29,8 +31,10 @@ namespace AccioInventory
 
             };
 
-                this.label1.Image = new Bitmap(global::AccioInventory.Properties.Resources.acció_400x400_1, this.label1.Size);
+            this.label1.Image = new Bitmap(global::AccioInventory.Properties.Resources.acció_400x400_1, this.label1.Size);
 
+             
+            Accio.InputBox();
         }
 
         private Control SetMyFooter()
@@ -63,6 +67,32 @@ namespace AccioInventory
 
         }
 
-        
+        public static DialogResult InputBox()
+        {
+            //show login..
+            var loginview = new LoginView();
+            Form loginForm = new Form { Size = loginview.Size };
+            loginForm.Controls.Add(loginview);
+            loginForm.MinimizeBox = false;
+            loginForm.MaximizeBox = false;
+            loginForm.StartPosition = FormStartPosition.CenterScreen;
+            loginForm.FormBorderStyle = FormBorderStyle.FixedDialog;
+            loginForm.Text = "Welcome to accio system.";
+
+            DialogResult dialogResult = loginForm.ShowDialog();
+
+            if (dialogResult == DialogResult.Cancel)
+            {
+                Environment.Exit(0);
+            }
+            if(dialogResult == DialogResult.Abort)
+            {
+                Environment.Exit(0);
+            }
+             
+            return dialogResult;
+        }
+
+
     }
 }
