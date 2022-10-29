@@ -1,4 +1,5 @@
 ﻿using AccioInventory.DBConnection;
+using AccioInventory.Helpers;
 using Oracle.ManagedDataAccess.Client;
 using System;
 using System.Collections.Generic;
@@ -52,6 +53,10 @@ namespace AccioInventory.UIViews
                 {
                     parentForm.Visible = true;
                 }
+
+                var userNameLabel = (Label)AccioEasyHelpers.GetControlByName(parentForm, "holderUser");
+                userNameLabel.Text = "Logged as: " + this.textBox1.Text;
+                userNameLabel.ForeColor = Color.Gray;
             }
             else
             {

@@ -34,7 +34,7 @@ namespace AccioInventory
             };
 
             this.label1.Image = new Bitmap(global::AccioInventory.Properties.Resources.acció_400x400_1, this.label1.Size);
-
+            this.label3.Name = "holderUser";
 
             myTimer_showAccio.Tick += new EventHandler((o, e) => {
                 myTimer_showAccio.Stop();
