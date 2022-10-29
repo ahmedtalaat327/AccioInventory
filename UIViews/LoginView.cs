@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AccioInventory.DBConnection;
+using Oracle.ManagedDataAccess.Client;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,6 +18,9 @@ namespace AccioInventory.UIViews
         public static bool admin = false;
         private Form parentForm = null;
 
+        private string key { get; set; } = "null";
+        
+
         private System.Windows.Forms.Timer myTimer_showReaction = new System.Windows.Forms.Timer();
 
         public LoginView(Form parent)
@@ -26,8 +31,12 @@ namespace AccioInventory.UIViews
 
 
             parentForm = parent;
-         
-        }
+
+            //test oracle db connection
+            Scripts.TestConnection(new [] {"127.0.0.1","1521","store","store"});
+        
+
+         }
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -76,6 +85,14 @@ namespace AccioInventory.UIViews
 
         private void tableLayoutPanel3_Paint(object sender, PaintEventArgs e)
         {
+
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+            //hide all pass text
+          
+
 
         }
     }
