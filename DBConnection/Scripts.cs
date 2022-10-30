@@ -7,7 +7,7 @@ namespace AccioInventory.DBConnection
     public static class Scripts
     {
 
-        public static void TestConnection(string[] dbServerParams)
+        public static OracleConnection TestConnection(string[] dbServerParams)
         {
             //params
             //[0] = IP = 127.0.0.1
@@ -21,10 +21,12 @@ namespace AccioInventory.DBConnection
             try
             {
                 conn.Open();
+              
             }
             catch (Exception orExc)
             {
                 MessageBox.Show(orExc.Message, "Database connection error!");
+                return null;
             }
 
             Console.Write("Connected to Oracle" + conn.ServerVersion);
@@ -32,6 +34,7 @@ namespace AccioInventory.DBConnection
             conn.Close();
             conn.Dispose();
             Console.Write("Disconnected");
+            return conn;
         }
     }
 }

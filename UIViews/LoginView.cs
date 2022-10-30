@@ -34,7 +34,8 @@ namespace AccioInventory.UIViews
             parentForm = parent;
 
             //test oracle db connection
-            Scripts.TestConnection(new [] {"127.0.0.1","1521","store","store"});
+            if (Scripts.TestConnection(new[] { "127.0.0.1", "1521", "store", "store" }) == null)
+                Environment.Exit(0);
         
 
          }
