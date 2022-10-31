@@ -11,7 +11,7 @@ namespace AccioInventory.DBConnection
         /// </summary>
         /// <param name="dbServerParams">All params to connect to local or remote IP device holding the DB</param>
         /// <returns></returns>
-        public static OracleConnection TestConnection(string[] dbServerParams)
+        public static OracleConnection TestConnection(string[] dbServerParams, bool autoClose = false)
         {
             //params
             //[0] = IP = 127.0.0.1
@@ -35,9 +35,12 @@ namespace AccioInventory.DBConnection
 
             Console.Write("Connected to Oracle" + conn.ServerVersion);
             // Close and Dispose OracleConnection object
-            conn.Close();
-            conn.Dispose();
-            Console.Write("Disconnected");
+            if (autoClose)
+            {
+                conn.Close();
+                conn.Dispose();
+                Console.Write("Disconnected");
+            }
             return conn;
         }
         /// <summary>
@@ -49,21 +52,24 @@ namespace AccioInventory.DBConnection
         /// <param name="values">Values to compre with</param>
         /// <param name="oper">Cmpare operations</param>
         /// <returns></returns>
-        public static OracleDataReader FetchMyData(OracleConnection oraConn, string tablename, string[] choosenFields, string[] values, string oper,string seper)
+        public static OracleDataReader FetchMyData(OracleConnection oraConn, string tablename, string[] choosenFields,  string[] whereFields ,string[] values, string oper,string seper)
         {
 
             OracleCommand cmd = new OracleCommand();
-            string sqlQueryStatement = "select";
+            string sqlQueryStatement = "select ";
             for (int x = 0; x < choosenFields.Length; x++)
             {
-                sqlQueryStatement += choosenFields[x] + ",";
+                sqlQueryStatement += choosenFields[x] + " ,";
             }
             sqlQueryStatement = sqlQueryStatement.Substring(0, sqlQueryStatement.Length - 1);
-            sqlQueryStatement += "from" + tablename + "where";
+            sqlQueryStatement += "from " + tablename + " where";
 
-            string select = WherePartQueryTxt(sqlQueryStatement, choosenFields, oper, seper);
+            string select = WherePartQueryTxt(sqlQueryStatement, whereFields, oper, seper);
 
-            cmd.CommandText = sqlQueryStatement;
+
+
+            cmd.CommandText = select;
+            //we need to repacle each ? by values in it's own order one by one..
             cmd.Connection = oraConn;
 
             OracleDataReader dr = cmd.ExecuteReader();
@@ -74,7 +80,7 @@ namespace AccioInventory.DBConnection
             return null;
         }
         /// <summary>
-        /// 
+        /// Speed way to re-use defintion data tables after where in sql statements.
         /// </summary>
         /// <param name="sqlOldCommand"></param>
         /// <param name="fields"></param>
