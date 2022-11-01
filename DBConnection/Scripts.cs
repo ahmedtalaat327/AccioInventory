@@ -1,5 +1,7 @@
 ﻿using Oracle.ManagedDataAccess.Client;
 using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 using System.Windows.Forms;
 
 namespace AccioInventory.DBConnection
@@ -67,9 +69,13 @@ namespace AccioInventory.DBConnection
             string select = WherePartQueryTxt(sqlQueryStatement, whereFields, oper, seper);
 
 
-
-            cmd.CommandText = select;
             //we need to repacle each ? by values in it's own order one by one..
+            select = ReplaceWithMyVals(select, values);
+            cmd.CommandText = select;
+
+            
+
+
             cmd.Connection = oraConn;
 
             OracleDataReader dr = cmd.ExecuteReader();
@@ -98,6 +104,40 @@ namespace AccioInventory.DBConnection
             sqlStatement = sqlStatement.Substring(0, sqlStatement.Length - seper.Length);
 
             return sqlStatement;
+        }
+        /// <summary>
+        /// This method is a replacement for setting values in oracle sql satements.
+        /// and setsring in java language!
+        /// </summary>
+        /// <param name="oldSelect"></param>
+        /// <param name="vals"></param>
+        /// <returns></returns>
+        private static string ReplaceWithMyVals(string oldSelect, string[] vals)
+        {
+            List<string> listofData = new List<string>();
+
+            int pointer = 0;
+           
+            for (int c = 0; c < oldSelect.Length; c++)
+            {
+                if (oldSelect[c] == '?')
+                {
+                    listofData.Add(oldSelect.Substring(pointer, c-pointer));
+                    pointer = c+1;
+                   
+                }
+            }
+
+            oldSelect = "";
+
+            for(int i = 0; i < listofData.Count; i++)
+            {
+                oldSelect += listofData[i];
+                oldSelect += vals[i];
+            }
+            
+
+            return oldSelect;
         }
     }
 }

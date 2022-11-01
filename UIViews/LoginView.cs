@@ -43,58 +43,85 @@ namespace AccioInventory.UIViews
         private void button1_Click(object sender, EventArgs e)
         {
             var myOpenedTunnel = Scripts.TestConnection(new[] { "127.0.0.1", "1521", "store", "store" });
-            var fetchedData = Scripts.FetchMyData(myOpenedTunnel, "users", new string[] { "user_name", "user_password" }, new string[] {"user_id"},new string[] {"999"},"!=","and");
+            var fetchedData = Scripts.FetchMyData(myOpenedTunnel, "users", new string[] { "user_name", "user_password" }, new string[] {"user_id","user_auth"},new string[] {"999","'user'"},"!=","and");
 
-            while (fetchedData.Read())
+            if (fetchedData != null)
             {
-                if (this.textBox1.Text == fetchedData["user_name"].ToString() && this.textBox2.Text == fetchedData["user_password"].ToString())
+                while (fetchedData.Read())
                 {
-                    verified = true;
-                    if (this.radioButton1.Checked)
+                    if (this.textBox1.Text == fetchedData["user_name"].ToString() && this.textBox2.Text == fetchedData["user_password"].ToString())
                     {
-                        admin = true;
-                        parentForm.Visible = true;
+                        verified = true;
+                        if (this.radioButton1.Checked)
+                        {
+                            admin = true;
+                            parentForm.Visible = true;
+                        }
+                        else
+                        {
+                            parentForm.Visible = true;
+                        }
+                        myOpenedTunnel.Close();
+                        myOpenedTunnel.Dispose();
+
+                        var userNameLabel = (Label)AccioEasyHelpers.GetControlByName(parentForm, "holderUser");
+                        userNameLabel.Text = "Logged as: " + this.textBox1.Text;
+                        userNameLabel.ForeColor = Color.Gray;
+                        break;
                     }
                     else
                     {
-                        parentForm.Visible = true;
-                    }
-                    myOpenedTunnel.Close();
-                    myOpenedTunnel.Dispose();
+                        this.label6.Text = "Faild to login";
+                        this.label6.ForeColor = Color.Red;
 
-                    var userNameLabel = (Label)AccioEasyHelpers.GetControlByName(parentForm, "holderUser");
-                    userNameLabel.Text = "Logged as: " + this.textBox1.Text;
-                    userNameLabel.ForeColor = Color.Gray;
-                    break;
-                }
-                else
-                {
-                    this.label6.Text = "Faild to login";
-                    this.label6.ForeColor = Color.Red;
-
-                    myTimer_showReaction.Tick += new EventHandler((ob, ev) =>
-                    {
-
-
-                        if (this.label6.Text.StartsWith("Fail"))
+                        myTimer_showReaction.Tick += new EventHandler((ob, ev) =>
                         {
-                            // Restarts the timer and increments the counter.
 
 
-                            this.label6.Text = "...";
-                            this.label6.ForeColor = Color.Black;
-                            myTimer_showReaction.Stop();
-                        }
+                            if (this.label6.Text.StartsWith("Fail"))
+                            {
+                                // Restarts the timer and increments the counter.
 
-                    });
 
-                    // Sets the timer interval to 5 seconds.
-                    myTimer_showReaction.Interval = 5000;
-                    myTimer_showReaction.Start();
+                                this.label6.Text = "...";
+                                this.label6.ForeColor = Color.Black;
+                                myTimer_showReaction.Stop();
+                            }
+
+                        });
+
+                        // Sets the timer interval to 5 seconds.
+                        myTimer_showReaction.Interval = 5000;
+                        myTimer_showReaction.Start();
+                    }
                 }
-            }
 
-           
+            }
+            else
+            {
+                this.label6.Text = "Faild to login";
+                this.label6.ForeColor = Color.Red;
+
+                myTimer_showReaction.Tick += new EventHandler((ob, ev) =>
+                {
+
+
+                    if (this.label6.Text.StartsWith("Fail"))
+                    {
+                        // Restarts the timer and increments the counter.
+
+
+                        this.label6.Text = "...";
+                        this.label6.ForeColor = Color.Black;
+                        myTimer_showReaction.Stop();
+                    }
+
+                });
+
+                // Sets the timer interval to 5 seconds.
+                myTimer_showReaction.Interval = 5000;
+                myTimer_showReaction.Start();
+            }
 
 
         }
