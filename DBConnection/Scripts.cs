@@ -54,7 +54,7 @@ namespace AccioInventory.DBConnection
         /// <param name="values">Values to compre with</param>
         /// <param name="oper">Cmpare operations</param>
         /// <returns></returns>
-        public static OracleDataReader FetchMyData(OracleConnection oraConn, string tablename, string[] choosenFields,  string[] whereFields ,string[] values, string oper,string seper)
+        public static OracleCommand FetchMyData(OracleConnection oraConn, string tablename, string[] choosenFields,  string[] whereFields ,string[] values, string oper,string seper)
         {
 
             OracleCommand cmd = new OracleCommand();
@@ -78,12 +78,8 @@ namespace AccioInventory.DBConnection
 
             cmd.Connection = oraConn;
 
-            OracleDataReader dr = cmd.ExecuteReader();
-            if (dr.HasRows)
-            {
-                return dr;
-            }
-            return null;
+            
+            return cmd;
         }
         /// <summary>
         /// Speed way to re-use defintion data tables after where in sql statements.

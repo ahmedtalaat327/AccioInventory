@@ -1,14 +1,6 @@
 ﻿using AccioInventory.UIViews;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Reflection.Emit;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace AccioInventory
@@ -35,6 +27,9 @@ namespace AccioInventory
 
             this.label1.Image = new Bitmap(global::AccioInventory.Properties.Resources.acció_400x400_1, this.label1.Size);
             this.label3.Name = "holderUser";
+
+            this.button2.Name = "adminstrationButton";
+            this.button3.Name = "configsButton";
 
             myTimer_showAccio.Tick += new EventHandler((o, e) => {
                 myTimer_showAccio.Stop();

@@ -1,5 +1,6 @@
 ﻿using AccioInventory.DBConnection;
 using AccioInventory.Helpers;
+using Oracle.ManagedDataAccess.Client;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
@@ -37,14 +38,18 @@ namespace AccioInventory.UIViews
         private void button1_Click(object sender, EventArgs e)
         {
             var myOpenedTunnel = Scripts.TestConnection(new[] { "127.0.0.1", "1521", "store", "store" });
-            var fetchedData = Scripts.FetchMyData(myOpenedTunnel, "users", new string[] { "user_name", "user_password","user_auth","user_full_name" }, new string[] {"user_id","user_auth"},new string[] {"999","'power'"},"!=","and");
 
-            if (fetchedData != null)
+            var sqlCMD = Scripts.FetchMyData(myOpenedTunnel, "users", new string[] { "user_name", "user_password","user_auth","user_full_name" }, new string[] {"user_id","user_auth"},new string[] {"999","'power'"},"!=","and");
+
+            OracleDataReader dr = sqlCMD.ExecuteReader();
+            if (dr.HasRows)
             {
-                while (fetchedData.Read())
+                
+            
+                while (dr.Read())
                 {
-                    if (this.textBox1.Text == fetchedData["user_name"].ToString() && this.textBox2.Text == fetchedData["user_password"].ToString()
-                       && loginAuth == fetchedData["user_auth"].ToString() ) 
+                    if (this.textBox1.Text == dr["user_name"].ToString() && this.textBox2.Text == dr["user_password"].ToString()
+                       && loginAuth == dr["user_auth"].ToString() ) 
                     {
                         verified = true;
                         if (this.radioButton1.Checked)
@@ -59,8 +64,17 @@ namespace AccioInventory.UIViews
                        
 
                         var userNameLabel = (Label)AccioEasyHelpers.GetControlByName(parentForm, "holderUser");
-                        userNameLabel.Text = "Logged as: " + fetchedData["user_full_name"].ToString();
+                        userNameLabel.Text = "Logged as: " + dr["user_full_name"].ToString();
                         userNameLabel.ForeColor = Color.Gray;
+
+                        if(admin)
+                        {
+                            var button_Adminstration = (Button)AccioEasyHelpers.GetControlByName(parentForm, "adminstrationButton");
+                            button_Adminstration.Enabled = true;
+
+                            var button_Configs = (Button)AccioEasyHelpers.GetControlByName(parentForm, "configsButton");
+                            button_Configs.Enabled = true;
+                        }
 
                         myOpenedTunnel.Close();
                         myOpenedTunnel.Dispose();
@@ -68,7 +82,7 @@ namespace AccioInventory.UIViews
                     }
                     else
                     {
-                        this.label6.Text = "Faild to login";
+                        this.label6.Text = "Failed to login";
                         this.label6.ForeColor = Color.Red;
 
                         myTimer_showReaction.Tick += new EventHandler((ob, ev) =>
@@ -96,7 +110,7 @@ namespace AccioInventory.UIViews
             }
             else
             {
-                this.label6.Text = "Faild to login";
+                this.label6.Text = "Failed to login";
                 this.label6.ForeColor = Color.Red;
 
                 myTimer_showReaction.Tick += new EventHandler((ob, ev) =>
