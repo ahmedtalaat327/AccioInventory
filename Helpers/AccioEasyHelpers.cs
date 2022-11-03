@@ -50,5 +50,28 @@ namespace AccioInventory.Helpers
 
             return data.ToArray();
         }
+
+        public static string GetTxTBettwen(string txt, string first, string last)
+        {
+
+            StringBuilder sb = new StringBuilder(txt);
+            int pos1 = txt.IndexOf(first) + first.Length;
+            int len = (txt.Length) - pos1;
+
+            string reminder = txt.Substring(pos1, len);
+
+
+            int pos2 = reminder.IndexOf(last) - last.Length + 1;
+
+
+
+
+
+
+            return reminder.Substring(0, pos2);
+
+
+
+        }
     }
 }

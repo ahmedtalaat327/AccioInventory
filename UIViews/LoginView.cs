@@ -30,9 +30,12 @@ namespace AccioInventory.UIViews
 
             //read params from config
             var data = AccioEasyHelpers.ReadTxTFiles("data\\params.info");
-           var i = data.Length;
+
+            var server_adress = AccioEasyHelpers.GetTxTBettwen(data[4], "::", ",");
+            var port = AccioEasyHelpers.GetTxTBettwen(data[5], "::", ",");
+
             //test oracle db connection
-            if (Scripts.TestConnection(new[] { "127.0.0.1", "1521", "store", "store" },true) == null)
+            if (Scripts.TestConnection(new[] { server_adress, port, "store", "store" },true) == null)
                 Environment.Exit(0);
         
 
