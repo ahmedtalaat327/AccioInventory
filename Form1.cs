@@ -1,4 +1,5 @@
-﻿using AccioInventory.UIViews;
+﻿using AccioInventory.Helpers;
+using AccioInventory.UIViews;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
@@ -127,7 +128,16 @@ namespace AccioInventory
             return dialogResult;
         }
 
-        
+        private void button4_Click(object sender, EventArgs e)
+        {
+
+
+          string uriToMe =    AccioEasyHelpers.MeExistanceLocation();
+
+          System.Diagnostics.Process.Start(uriToMe);
+
+          this.Dispose();
+        }
     }
 
 }
