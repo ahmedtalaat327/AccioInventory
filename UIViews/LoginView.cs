@@ -28,6 +28,9 @@ namespace AccioInventory.UIViews
 
             parentForm = parent;
 
+            //read params from config
+            var data = AccioEasyHelpers.ReadTxTFiles("data\\params.info");
+           var i = data.Length;
             //test oracle db connection
             if (Scripts.TestConnection(new[] { "127.0.0.1", "1521", "store", "store" },true) == null)
                 Environment.Exit(0);

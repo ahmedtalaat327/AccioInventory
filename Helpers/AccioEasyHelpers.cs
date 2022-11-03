@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Security.Policy;
 using System.Text;
@@ -36,6 +37,18 @@ namespace AccioInventory.Helpers
         public static string MeExistanceLocation()
         {
            return System.Reflection.Assembly.GetEntryAssembly().Location;
+        }
+        public static string[] ReadTxTFiles(string pathToFile)
+        {
+            List<string> data = new List<string>();
+
+            string filePath = Path.Combine(System.IO.Path.GetFullPath(@"..\..\"), "resources\\"+pathToFile);
+
+            data.AddRange(System.IO.File.ReadAllLines(filePath));
+
+            
+
+            return data.ToArray();
         }
     }
 }

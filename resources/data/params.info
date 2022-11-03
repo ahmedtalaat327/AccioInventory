@@ -1,2 +1,8 @@
+
+**this file is to initialize the current database connnection to make app connect to its server**
+
+[
 #server_ip::127.0.0.1,
-#company_name::Haam Corporation,
+#port::1521,
+#company_name::Haam Corporation
+]
