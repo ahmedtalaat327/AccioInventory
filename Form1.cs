@@ -2,6 +2,7 @@
 using AccioInventory.UIViews;
 using System;
 using System.Drawing;
+using System.Net;
 using System.Windows.Forms;
 
 namespace AccioInventory
@@ -131,12 +132,19 @@ namespace AccioInventory
         private void button4_Click(object sender, EventArgs e)
         {
 
-
+         //signout procedure...
           string uriToMe =    AccioEasyHelpers.MeExistanceLocation();
 
           System.Diagnostics.Process.Start(uriToMe);
 
           this.Dispose();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            this.tableLayoutPanel3.Controls.Remove(label2);
+            this.tableLayoutPanel3.Controls.Add(new ConfigView(this.tableLayoutPanel3),0,0);
+
         }
     }
 

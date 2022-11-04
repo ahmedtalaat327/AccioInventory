@@ -1,7 +1,6 @@
 ﻿using Oracle.ManagedDataAccess.Client;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Windows.Forms;
 
 namespace AccioInventory.DBConnection
@@ -15,11 +14,11 @@ namespace AccioInventory.DBConnection
         /// <returns></returns>
         public static OracleConnection TestConnection(string[] dbServerParams, bool autoClose = false)
         {
-            //params
+            //params ex:
             //[0] = IP = 127.0.0.1
             //[1] = Port = 1521
-            //[2] = user = store
-            //[3] = pass = store
+            //[2] = user = store //this should be deep coded here not in config file for security.
+            //[3] = pass = store //this should be deep coded here not in config file for security.
             //test connectio to oracle
             string oradb = "Data Source =" + dbServerParams[0] + ":" + dbServerParams[1] +" / orcl; User Id = " + dbServerParams[2] +"; password = " + dbServerParams[3]+";";
 
