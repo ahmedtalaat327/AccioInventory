@@ -17,8 +17,8 @@ What you need to know:. </br>
 #1 this SW using database managed dll for oracle version 10g.<br>
 #2 you should know how to build all tables to act inside scripts.<br>
 #3 working in adding .cs file to handle main SQL commands and quiries.<br>
-
+</br></br></br>
 Very Impertant!</br>
 #1 first thing first you must build your database.</br>
 #2 I will put down the structure script you may need to change it.</br>
-3# there is a file called 'params.info' its for intit the current connection.</br>
+#3 there is a file called 'params.info' its for intit the current connection.</br>
