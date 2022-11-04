@@ -14,7 +14,7 @@ namespace AccioInventory.UIViews
         private static string loginAuth = "user";
         private Form parentForm = null;
 
-        private string key { get; set; } = "null";
+        
         
 
         private System.Windows.Forms.Timer myTimer_showReaction = new System.Windows.Forms.Timer();
@@ -28,22 +28,33 @@ namespace AccioInventory.UIViews
 
             parentForm = parent;
 
-            //read params from config
-            var data = AccioEasyHelpers.ReadTxTFiles(AccioEasyHelpers.MeExistanceLocation().Substring(0, AccioEasyHelpers.MeExistanceLocation().Length-("AccioInventory.exe").Length) +"data\\params.info");
-
-            var server_adress = AccioEasyHelpers.GetTxTBettwen(data[4], "::", ",");
-            var port = AccioEasyHelpers.GetTxTBettwen(data[5], "::", ",");
+            
 
             //test oracle db connection
-            if (Scripts.TestConnection(new[] { server_adress, port, "store", "store" },true) == null)
+            if (TestConn(true) == null)
                 Environment.Exit(0);
         
 
          }
+        /// <summary>
+        /// Test connectivity to database 
+        /// </summary>
+        /// <param name="autoclose">show if automatic connection needs to be closed or not</param>
+        /// <returns></returns>
+        private OracleConnection TestConn(bool autoclose)
+        {
+            //read params from config
+            var data = AccioEasyHelpers.ReadTxTFiles(AccioEasyHelpers.MeExistanceLocation().Substring(0, AccioEasyHelpers.MeExistanceLocation().Length - ("AccioInventory.exe").Length) + "data\\params.info");
+
+            var server_adress = AccioEasyHelpers.GetTxTBettwen(data[4], "::", ",");
+            var port = AccioEasyHelpers.GetTxTBettwen(data[5], "::", ",");
+
+            return Scripts.TestConnection(new[] { server_adress, port, "store", "store" }, autoclose);
+        }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            var myOpenedTunnel = Scripts.TestConnection(new[] { "127.0.0.1", "1521", "store", "store" });
+            var myOpenedTunnel = TestConn(false);
 
             var sqlCMD = Scripts.FetchMyData(myOpenedTunnel, "users", new string[] { "user_name", "user_password","user_auth","user_full_name" }, new string[] {"user_id","user_auth"},new string[] {"999","'power'"},"!=","and");
 
