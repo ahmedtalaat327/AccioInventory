@@ -29,7 +29,7 @@ namespace AccioInventory.UIViews
             parentForm = parent;
 
             //read params from config
-            var data = AccioEasyHelpers.ReadTxTFiles("data\\params.info");
+            var data = AccioEasyHelpers.ReadTxTFiles(AccioEasyHelpers.MeExistanceLocation().Substring(0, AccioEasyHelpers.MeExistanceLocation().Length-("AccioInventory.exe").Length) +"data\\params.info");
 
             var server_adress = AccioEasyHelpers.GetTxTBettwen(data[4], "::", ",");
             var port = AccioEasyHelpers.GetTxTBettwen(data[5], "::", ",");

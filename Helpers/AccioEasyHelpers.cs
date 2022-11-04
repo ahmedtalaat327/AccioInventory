@@ -42,9 +42,8 @@ namespace AccioInventory.Helpers
         {
             List<string> data = new List<string>();
 
-            string filePath = Path.Combine(System.IO.Path.GetFullPath(@"..\..\"), "resources\\"+pathToFile);
-
-            data.AddRange(System.IO.File.ReadAllLines(filePath));
+          
+            data.AddRange(System.IO.File.ReadAllLines(pathToFile));
 
             
 
