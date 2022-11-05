@@ -33,8 +33,14 @@ namespace AccioInventory.UIViews
             //test oracle db connection
             if (TestConn(true) == null)
                 Environment.Exit(0);
-        
 
+
+            //read params from config
+            var data = AccioEasyHelpers.ReadTxTFiles(AccioEasyHelpers.MeExistanceLocation().Substring(0, AccioEasyHelpers.MeExistanceLocation().Length - ("AccioInventory.exe").Length) + "data\\params.info");
+
+            var cpm_name = AccioEasyHelpers.GetTxTBettwen(data[6], "::", ",");
+
+            this.label5.Text = cpm_name;
          }
         /// <summary>
         /// Test connectivity to database 
@@ -78,10 +84,14 @@ namespace AccioInventory.UIViews
                         {
                             parentForm.Visible = true;
                         }
-                       
+
+                        //read params from config
+                        var data = AccioEasyHelpers.ReadTxTFiles(AccioEasyHelpers.MeExistanceLocation().Substring(0, AccioEasyHelpers.MeExistanceLocation().Length - ("AccioInventory.exe").Length) + "data\\params.info");
+
+                        var cpm_name = AccioEasyHelpers.GetTxTBettwen(data[6], "::", ",");
 
                         var userNameLabel = (Label)AccioEasyHelpers.GetControlByName(parentForm, "holderUser");
-                        userNameLabel.Text = "Logged as: " + dr["user_full_name"].ToString();
+                        userNameLabel.Text = "Logged as: " + dr["user_full_name"].ToString()+" for "+ cpm_name;
                         userNameLabel.ForeColor = Color.Gray;
 
                         if(admin)

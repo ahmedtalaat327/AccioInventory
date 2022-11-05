@@ -43,7 +43,9 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.label2 = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.commandToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.varoiusInventoriesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -52,8 +54,6 @@
             this.newInvoiceForRFMToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.accioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -91,12 +91,12 @@
             // 
             this.tableLayoutPanel2.ColumnCount = 1;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Controls.Add(this.label3, 0, 6);
             this.tableLayoutPanel2.Controls.Add(this.button4, 0, 3);
             this.tableLayoutPanel2.Controls.Add(this.button3, 0, 2);
             this.tableLayoutPanel2.Controls.Add(this.button2, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.button1, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.label1, 0, 7);
+            this.tableLayoutPanel2.Controls.Add(this.label3, 0, 5);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -106,7 +106,7 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 43F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(159, 371);
@@ -116,9 +116,10 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label3.Location = new System.Drawing.Point(3, 220);
+            this.label3.Location = new System.Drawing.Point(3, 200);
+            this.label3.MaximumSize = new System.Drawing.Size(0, 26);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(153, 20);
+            this.label3.Size = new System.Drawing.Size(153, 26);
             this.label3.TabIndex = 2;
             this.label3.Text = "User name here...";
             // 
@@ -170,6 +171,17 @@
             this.button1.Text = "Cards";
             this.button1.UseVisualStyleBackColor = true;
             // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.label1.Image = global::AccioInventory.Properties.Resources.acció_400x400_1;
+            this.label1.Location = new System.Drawing.Point(3, 329);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(45, 42);
+            this.label1.TabIndex = 4;
+            this.label1.Text = ".";
+            // 
             // tableLayoutPanel3
             // 
             this.tableLayoutPanel3.BackColor = System.Drawing.SystemColors.Info;
@@ -185,6 +197,19 @@
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 371F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(657, 371);
             this.tableLayoutPanel3.TabIndex = 1;
+            // 
+            // label2
+            // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(3, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(651, 371);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Do Something act to new command ..";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // menuStrip1
             // 
@@ -247,30 +272,6 @@
             this.accioToolStripMenuItem.Name = "accioToolStripMenuItem";
             this.accioToolStripMenuItem.Size = new System.Drawing.Size(104, 22);
             this.accioToolStripMenuItem.Text = "Accio";
-            // 
-            // label1
-            // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.label1.Image = global::AccioInventory.Properties.Resources.acció_400x400_1;
-            this.label1.Location = new System.Drawing.Point(3, 329);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(45, 42);
-            this.label1.TabIndex = 4;
-            this.label1.Text = ".";
-            // 
-            // label2
-            // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(3, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(651, 371);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Do Something act to new command ..";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Accio
             // 

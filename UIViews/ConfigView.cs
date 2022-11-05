@@ -40,8 +40,8 @@ namespace AccioInventory.UIViews
             var port = AccioEasyHelpers.GetTxTBettwen(data[5], "::", ",");
 
             this.textBox1.Text = server_adress;
-            this.textBox2.Text = "store";
-            this.textBox3.Text = "store";
+            this.textBox2.Text = "st*** => only developer can change it contact your seller!";
+            this.textBox3.Text = "st***";
             this.textBox4.Text = port;
 
         }

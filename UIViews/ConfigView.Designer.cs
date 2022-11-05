@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ConfigView));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
@@ -42,6 +43,7 @@
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -77,6 +79,7 @@
             this.tableLayoutPanel2.Controls.Add(this.textBox3, 1, 3);
             this.tableLayoutPanel2.Controls.Add(this.textBox4, 1, 4);
             this.tableLayoutPanel2.Controls.Add(this.label1, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.label6, 1, 5);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -187,6 +190,7 @@
             // 
             // textBox3
             // 
+            this.textBox3.Enabled = false;
             this.textBox3.Location = new System.Drawing.Point(128, 140);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(355, 20);
@@ -208,10 +212,21 @@
             // 
             // textBox2
             // 
+            this.textBox2.Enabled = false;
             this.textBox2.Location = new System.Drawing.Point(128, 106);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(355, 20);
             this.textBox2.TabIndex = 6;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label6.Location = new System.Drawing.Point(128, 205);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(498, 49);
+            this.label6.TabIndex = 9;
+            this.label6.Text = resources.GetString("label6.Text");
             // 
             // ConfigView
             // 
@@ -244,5 +259,6 @@
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.Label label6;
     }
 }
