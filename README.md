@@ -13,6 +13,9 @@ Preview
 <a href="https://ibb.co/fXKxrHT"><img src="https://i.ibb.co/kGrSqXP/Screenshot-64.png" alt="Screenshot-64" ></a>
 
 </br>
+<a href="https://ibb.co/W61yzXr"><img src="https://i.ibb.co/9NjT40x/Screenshot-66.png" alt="Screenshot-66" border="0"></a>
+</br>
+
 What you need to know:. </br>
 #1 this SW using database managed dll for oracle version 10g.<br>
 #2 you should know how to build all tables to act inside scripts.<br>

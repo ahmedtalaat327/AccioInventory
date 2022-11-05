@@ -142,7 +142,7 @@ namespace AccioInventory
 
         private void button3_Click(object sender, EventArgs e)
         {
-            this.tableLayoutPanel3.Controls.Remove(label2);
+            this.tableLayoutPanel3.Controls.RemoveAt(0);
             this.tableLayoutPanel3.Controls.Add(new ConfigView(this.tableLayoutPanel3),0,0);
 
         }
