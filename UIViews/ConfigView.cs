@@ -1,6 +1,7 @@
 ﻿using AccioInventory.Helpers;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 
@@ -28,6 +29,14 @@ namespace AccioInventory.UIViews
 
             };
 
+            ReadPARAMS();
+
+            var photo_path = AccioEasyHelpers.MeExistanceLocation().Substring(0, AccioEasyHelpers.MeExistanceLocation().Length - ("AccioInventory.exe").Length) + "data\\companylogo.png";
+            this.label7.Image = new Bitmap(Image.FromFile(photo_path),this.label7.Width,this.label7.Height);
+
+        }
+        private void ReadPARAMS()
+        {
             //read params from config
             var data = AccioEasyHelpers.ReadTxTFiles(AccioEasyHelpers.MeExistanceLocation().Substring(0, AccioEasyHelpers.MeExistanceLocation().Length - ("AccioInventory.exe").Length) + "data\\params.info");
 
@@ -40,7 +49,6 @@ namespace AccioInventory.UIViews
             this.textBox3.Text = "st***";
             this.textBox4.Text = port;
             this.textBox5.Text = comp;
-           
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -78,6 +86,12 @@ namespace AccioInventory.UIViews
             }
 
 
+        }
+
+        private void button2_MouseClick(object sender, MouseEventArgs e)
+        {
+            ReadPARAMS();
+            MessageBox.Show("Paramas..Loaded..", "Updated");
         }
     }
 }

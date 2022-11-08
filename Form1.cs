@@ -146,6 +146,13 @@ namespace AccioInventory
             this.tableLayoutPanel3.Controls.Add(new ConfigView(this.tableLayoutPanel3),0,0);
 
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.tableLayoutPanel3.Controls.RemoveAt(0);
+            this.tableLayoutPanel3.Controls.Add(new AdminstrationView(this.tableLayoutPanel3), 0, 0);
+
+        }
     }
 
 }
