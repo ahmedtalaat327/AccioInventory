@@ -63,11 +63,11 @@ namespace AccioInventory.UIViews
             t = new Task( async () =>  { 
                 AllUsers = new List<UsersModel>();
 
-              //  if (!t.IsCompleted)
-                //    MessageBox.Show("Loading", "Please wait!");
+             
+                    
                 
 
-            AllUsers = await (LoadingUsersFromDB(AllUsers));
+               AllUsers = await (LoadingUsersFromDB(AllUsers));
 
 
                 var bindingList = new BindingList<UsersModel>(AllUsers);
@@ -75,10 +75,14 @@ namespace AccioInventory.UIViews
 
                 //dispacher must be here
                 dataGridView2.Invoke(new Action(() => {dataGridView2.DataSource = source; }));
-                
 
-             
 
+
+                if (t.IsCompleted)
+                {
+                    Cursor.Current = Cursors.Default;
+                    Application.UseWaitCursor = false;
+                }
 
             });
             t.Start();
@@ -91,7 +95,7 @@ namespace AccioInventory.UIViews
             return Task.Run(() => { 
             var myOpenedTunnel = TestConn(false);
 
-            var sqlCMD = Scripts.FetchMyData(myOpenedTunnel, "users", new string[] { "user_id", "user_full_name", "user_password", "user_auth", "user_full_name" }, new string[] { "user_id", "user_auth" }, new string[] { "999", "'power'" }, "!=", "and");
+            var sqlCMD = Scripts.FetchMyData(myOpenedTunnel, "users", new string[] { "user_id", "user_full_name", "user_password", "user_auth", "user_full_name","dept_id" }, new string[] { "user_id", "user_auth" }, new string[] { "999", "'power'" }, "!=", "and");
 
 
             OracleDataReader dr = sqlCMD.ExecuteReader();
@@ -101,13 +105,17 @@ namespace AccioInventory.UIViews
 
                 while (dr.Read())
                 {
-                        myList.Add(new UsersModel() { Id = Int32.Parse(dr["user_id"].ToString()), FullName = dr["user_full_name"].ToString() });
+                        myList.Add(new UsersModel() { Id = Int32.Parse(dr["user_id"].ToString()), FullName = dr["user_full_name"].ToString() ,DepartmentId = Int32.Parse(dr["dept_id"].ToString()) });
 
                 }
             }
 
             myOpenedTunnel.Close();
             myOpenedTunnel.Dispose();
+
+                Application.UseWaitCursor = true;
+                Application.DoEvents();
+         
 
             return myList;
             });
