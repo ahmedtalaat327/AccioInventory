@@ -31,7 +31,7 @@ namespace AccioInventory.UIViews
             
 
             //test oracle db connection
-            if (TestConn(true) == null)
+            if (AccioEasyHelpers.ReadParamsThenConnectToDB(true) == null)
                 Environment.Exit(0);
 
 
@@ -42,25 +42,11 @@ namespace AccioInventory.UIViews
 
             this.label5.Text = cpm_name;
          }
-        /// <summary>
-        /// Test connectivity to database 
-        /// </summary>
-        /// <param name="autoclose">show if automatic connection needs to be closed or not</param>
-        /// <returns></returns>
-        private OracleConnection TestConn(bool autoclose)
-        {
-            //read params from config
-            var data = AccioEasyHelpers.ReadTxTFiles(AccioEasyHelpers.MeExistanceLocation().Substring(0, AccioEasyHelpers.MeExistanceLocation().Length - ("AccioInventory.exe").Length) + "data\\params.info");
-
-            var server_adress = AccioEasyHelpers.GetTxTBettwen(data[4], "::", ",");
-            var port = AccioEasyHelpers.GetTxTBettwen(data[5], "::", ",");
-
-            return Scripts.TestConnection(new[] { server_adress, port, "store", "store" }, autoclose);
-        }
+      
 
         private void button1_Click(object sender, EventArgs e)
         {
-            var myOpenedTunnel = TestConn(false);
+            var myOpenedTunnel = AccioEasyHelpers.ReadParamsThenConnectToDB(false);
 
             var sqlCMD = Scripts.FetchMyData(myOpenedTunnel, "users", new string[] { "user_name", "user_password","user_auth","user_full_name" }, new string[] {"user_id","user_auth"},new string[] {"999","'power'"},"!=","and");
 
@@ -94,15 +80,22 @@ namespace AccioInventory.UIViews
                         userNameLabel.Text = "Logged as: " + dr["user_full_name"].ToString()+" for "+ cpm_name;
                         userNameLabel.ForeColor = Color.Gray;
 
-                        if(admin)
+                        if (admin)
                         {
                             var button_Adminstration = (Button)AccioEasyHelpers.GetControlByName(parentForm, "adminstrationButton");
                             button_Adminstration.Enabled = true;
 
                             var button_Configs = (Button)AccioEasyHelpers.GetControlByName(parentForm, "configsButton");
                             button_Configs.Enabled = true;
-                        }
 
+                            var auth_Sign = (Label)AccioEasyHelpers.GetControlByName(parentForm, "holdAuth");
+                            auth_Sign.Text = "admin";
+                        }
+                        else
+                        {
+                            var auth_Sign_ = (Label)AccioEasyHelpers.GetControlByName(parentForm, "holdAuth");
+                            auth_Sign_.Text = "user";
+                        }
                         myOpenedTunnel.Close();
                         myOpenedTunnel.Dispose();
                         break;

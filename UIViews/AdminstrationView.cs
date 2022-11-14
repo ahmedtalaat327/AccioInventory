@@ -40,21 +40,7 @@ namespace AccioInventory.UIViews
             };
            
         }
-        /// <summary>
-        /// Test connectivity to database 
-        /// </summary>
-        /// <param name="autoclose">show if automatic connection needs to be closed or not</param>
-        /// <returns></returns>
-        private OracleConnection TestConn(bool autoclose)
-        {
-            //read params from config
-            var data = AccioEasyHelpers.ReadTxTFiles(AccioEasyHelpers.MeExistanceLocation().Substring(0, AccioEasyHelpers.MeExistanceLocation().Length - ("AccioInventory.exe").Length) + "data\\params.info");
-
-            var server_adress = AccioEasyHelpers.GetTxTBettwen(data[4], "::", ",");
-            var port = AccioEasyHelpers.GetTxTBettwen(data[5], "::", ",");
-
-            return Scripts.TestConnection(new[] { server_adress, port, "store", "store" }, autoclose);
-        }
+       
         private void tabControl1_Click(object sender, EventArgs e)
         {
 
@@ -93,7 +79,7 @@ namespace AccioInventory.UIViews
         private Task<List<UsersModel>> LoadingUsersFromDB(List<UsersModel> myList)
         {
             return Task.Run(() => { 
-            var myOpenedTunnel = TestConn(false);
+            var myOpenedTunnel = AccioEasyHelpers.ReadParamsThenConnectToDB(false);
 
             var sqlCMD = Scripts.FetchMyData(myOpenedTunnel, "users", new string[] { "user_id", "user_full_name", "user_password", "user_auth", "user_full_name","dept_id" }, new string[] { "user_id", "user_auth" }, new string[] { "999", "'power'" }, "!=", "and");
 

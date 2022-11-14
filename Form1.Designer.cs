@@ -44,6 +44,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.label2 = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -52,6 +53,11 @@
             this.commandToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.newRFMToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newInvoiceForRFMToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.newUserToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.newEmpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.newInventoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.newItemModalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.newSysToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.accioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1.SuspendLayout();
@@ -97,6 +103,7 @@
             this.tableLayoutPanel2.Controls.Add(this.button1, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.label1, 0, 7);
             this.tableLayoutPanel2.Controls.Add(this.label3, 0, 5);
+            this.tableLayoutPanel2.Controls.Add(this.label4, 0, 6);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -183,6 +190,17 @@
             this.label3.TabIndex = 2;
             this.label3.Text = "User name here...";
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label4.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label4.Location = new System.Drawing.Point(3, 240);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(153, 20);
+            this.label4.TabIndex = 5;
+            this.label4.Text = "User";
+            // 
             // tableLayoutPanel3
             // 
             this.tableLayoutPanel3.BackColor = System.Drawing.SystemColors.Info;
@@ -243,10 +261,16 @@
             // 
             this.commandToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.newRFMToolStripMenuItem,
-            this.newInvoiceForRFMToolStripMenuItem});
+            this.newInvoiceForRFMToolStripMenuItem,
+            this.newUserToolStripMenuItem,
+            this.newEmpToolStripMenuItem,
+            this.newInventoryToolStripMenuItem,
+            this.newItemModalToolStripMenuItem,
+            this.newSysToolStripMenuItem});
             this.commandToolStripMenuItem1.Name = "commandToolStripMenuItem1";
             this.commandToolStripMenuItem1.Size = new System.Drawing.Size(76, 20);
             this.commandToolStripMenuItem1.Text = "Command";
+            this.commandToolStripMenuItem1.DropDownOpening += new System.EventHandler(this.commandToolStripMenuItem1_DropDownOpening);
             // 
             // newRFMToolStripMenuItem
             // 
@@ -259,6 +283,36 @@
             this.newInvoiceForRFMToolStripMenuItem.Name = "newInvoiceForRFMToolStripMenuItem";
             this.newInvoiceForRFMToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
             this.newInvoiceForRFMToolStripMenuItem.Text = "New Invoice for RFM";
+            // 
+            // newUserToolStripMenuItem
+            // 
+            this.newUserToolStripMenuItem.Name = "newUserToolStripMenuItem";
+            this.newUserToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.newUserToolStripMenuItem.Text = "New User";
+            // 
+            // newEmpToolStripMenuItem
+            // 
+            this.newEmpToolStripMenuItem.Name = "newEmpToolStripMenuItem";
+            this.newEmpToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.newEmpToolStripMenuItem.Text = "New Emp";
+            // 
+            // newInventoryToolStripMenuItem
+            // 
+            this.newInventoryToolStripMenuItem.Name = "newInventoryToolStripMenuItem";
+            this.newInventoryToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.newInventoryToolStripMenuItem.Text = "New Inventory";
+            // 
+            // newItemModalToolStripMenuItem
+            // 
+            this.newItemModalToolStripMenuItem.Name = "newItemModalToolStripMenuItem";
+            this.newItemModalToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.newItemModalToolStripMenuItem.Text = "New Item Modal";
+            // 
+            // newSysToolStripMenuItem
+            // 
+            this.newSysToolStripMenuItem.Name = "newSysToolStripMenuItem";
+            this.newSysToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.newSysToolStripMenuItem.Text = "New Vendor";
             // 
             // aboutToolStripMenuItem
             // 
@@ -322,6 +376,12 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ToolStripMenuItem newUserToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem newEmpToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem newInventoryToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem newItemModalToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem newSysToolStripMenuItem;
+        private System.Windows.Forms.Label label4;
     }
 }
 

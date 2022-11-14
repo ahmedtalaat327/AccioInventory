@@ -29,6 +29,7 @@ namespace AccioInventory
 
             this.label1.Image = new Bitmap(global::AccioInventory.Properties.Resources.acció_400x400_1, this.label1.Size);
             this.label3.Name = "holderUser";
+            this.label4.Name = "holdAuth";
 
             this.button2.Name = "adminstrationButton";
             this.button3.Name = "configsButton";
@@ -152,6 +153,18 @@ namespace AccioInventory
             this.tableLayoutPanel3.Controls.RemoveAt(0);
             this.tableLayoutPanel3.Controls.Add(new AdminstrationView(this.tableLayoutPanel3), 0, 0);
 
+        }
+
+       
+
+        private void commandToolStripMenuItem1_DropDownOpening(object sender, EventArgs e)
+        {
+            if (label4.Text == "user")
+            {
+                this.newUserToolStripMenuItem.Enabled = false;
+                this.newEmpToolStripMenuItem.Enabled = false;
+                this.newInventoryToolStripMenuItem.Enabled = false;
+            }
         }
     }
 

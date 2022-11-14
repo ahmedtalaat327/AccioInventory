@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AccioInventory.DBConnection;
+using Oracle.ManagedDataAccess.Client;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -71,6 +73,22 @@ namespace AccioInventory.Helpers
 
 
 
+        }
+
+        /// <summary>
+        /// Test connectivity to database 
+        /// </summary>
+        /// <param name="autoclose">show if automatic connection needs to be closed or not</param>
+        /// <returns></returns>
+        public static OracleConnection ReadParamsThenConnectToDB(bool autoclose)
+        {
+            //read params from config
+            var data = AccioEasyHelpers.ReadTxTFiles(AccioEasyHelpers.MeExistanceLocation().Substring(0, AccioEasyHelpers.MeExistanceLocation().Length - ("AccioInventory.exe").Length) + "data\\params.info");
+
+            var server_adress = AccioEasyHelpers.GetTxTBettwen(data[4], "::", ",");
+            var port = AccioEasyHelpers.GetTxTBettwen(data[5], "::", ",");
+
+            return Scripts.TestConnection(new[] { server_adress, port, "store", "store" }, autoclose);
         }
     }
 }
