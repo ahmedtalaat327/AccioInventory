@@ -79,12 +79,15 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Helpers\AccioEasyHelpers.cs" />
-    <Compile Include="Helpers\SplashScreen.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Models\UsersModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ToolBoxUIViews\UsersToolBoxView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ToolBoxUIViews\UsersToolBoxView.Designer.cs">
+      <DependentUpon>UsersToolBoxView.cs</DependentUpon>
+    </Compile>
     <Compile Include="UIViews\AdminstrationView.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -116,6 +119,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="ToolBoxUIViews\UsersToolBoxView.resx">
+      <DependentUpon>UsersToolBoxView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UIViews\AdminstrationView.resx">
       <DependentUpon>AdminstrationView.cs</DependentUpon>
     </EmbeddedResource>
@@ -157,5 +163,6 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

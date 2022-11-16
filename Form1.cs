@@ -17,7 +17,7 @@ namespace AccioInventory
             InitializeComponent();
 
             this.Controls.Add(SetMyFooter());
-
+            this.Name = "mainForm";
 
             this.Resize += (s, e) => {
 

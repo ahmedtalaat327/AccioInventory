@@ -1,6 +1,7 @@
 ﻿using AccioInventory.DBConnection;
 using AccioInventory.Helpers;
 using AccioInventory.Models;
+using AccioInventory.ToolBoxUIViews;
 using Oracle.ManagedDataAccess.Client;
 using System;
 using System.Collections.Generic;
@@ -18,6 +19,8 @@ namespace AccioInventory.UIViews
     {
 
       public  List<UsersModel> AllUsers  { get; set; }
+
+        private static bool UsersToolBoxVisible { get; set; } = false;
 
     public AdminstrationView(Control parentPanel)
         {
@@ -37,6 +40,31 @@ namespace AccioInventory.UIViews
                 this.Size = new System.Drawing.Size(parentPanel.Size.Width, parentPanel.Size.Height);
                 this.Refresh();
 
+            };
+
+            this.tabPage4.Paint += (g,d) => {
+                if (!UsersToolBoxVisible)
+                {
+                    AdminstrationView.UsersToolBoxVisible = true;
+
+                    Form miniVisibleToolsBoxUsers = new Form();
+                    miniVisibleToolsBoxUsers.Size = new Size(390, 750);
+                    miniVisibleToolsBoxUsers.StartPosition = FormStartPosition.Manual;
+                    miniVisibleToolsBoxUsers.Location = new Point(5, 10);
+                    miniVisibleToolsBoxUsers.Text = "Users Control Panel";
+                    miniVisibleToolsBoxUsers.Icon = null;
+                    miniVisibleToolsBoxUsers.ShowIcon = false;
+
+                    UsersToolBoxView usersToolBoxView = new UsersToolBoxView();
+                    var oulineSize = usersToolBoxView.Size;
+                    miniVisibleToolsBoxUsers.Size = new Size(oulineSize.Width + 15, oulineSize.Height + 10);
+                    miniVisibleToolsBoxUsers.Controls.Add(usersToolBoxView);
+                    miniVisibleToolsBoxUsers.Visible = true;
+                    miniVisibleToolsBoxUsers.TopMost = true;
+                    miniVisibleToolsBoxUsers.FormClosed += (o, p) => { AdminstrationView.UsersToolBoxVisible = false; };
+
+
+                }
             };
            
         }
