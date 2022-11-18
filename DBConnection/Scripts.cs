@@ -134,6 +134,16 @@ namespace AccioInventory.DBConnection
 
             return oldSelect;
         }
+        //still working on it....
+        public static int InsertMyData(OracleConnection oraConn, string tablename)
+        {
+
+
+
+            return -1;
+        }
+
+
         
     }
 }

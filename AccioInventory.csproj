@@ -148,7 +148,9 @@
     <Content Include="acció-400x400-1.ico" />
     <Content Include="resources\imgs\acció-400x400-1.ico" />
     <Content Include="resources\imgs\acció-400x400-1.jpg" />
+    <Content Include="resources\imgs\adduser.png" />
     <Content Include="resources\imgs\man-icon32.png" />
+    <Content Include="resources\imgs\secrecy-icon32.png" />
     <Content Include="resources\libs\Oracle.ManagedDataAccess.dll" />
   </ItemGroup>
   <ItemGroup>

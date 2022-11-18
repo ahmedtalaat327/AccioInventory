@@ -16,7 +16,5 @@ namespace AccioInventory.ToolBoxUIViews
         {
             InitializeComponent();
         }
-
-      
     }
 }
