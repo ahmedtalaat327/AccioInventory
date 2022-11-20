@@ -29,19 +29,9 @@ namespace AccioInventory.Models
         public string DepartmentName { get { return GetDeptName(deptId); } }
 
 
-        private OracleConnection TestConn(bool autoclose)
-        {
-            //read params from config
-            var data = AccioEasyHelpers.ReadTxTFiles(AccioEasyHelpers.MeExistanceLocation().Substring(0, AccioEasyHelpers.MeExistanceLocation().Length - ("AccioInventory.exe").Length) + "data\\params.info");
-
-            var server_adress = AccioEasyHelpers.GetTxTBettwen(data[4], "::", ",");
-            var port = AccioEasyHelpers.GetTxTBettwen(data[5], "::", ",");
-
-            return Scripts.TestConnection(new[] { server_adress, port, "store", "store" }, autoclose);
-        }
         private string GetDeptName(int deptId)
         {
-            var myOpenedTunnel = TestConn(false);
+            var myOpenedTunnel = AccioEasyHelpers.ReadParamsThenConnectToDB(false);
 
             var sqlCMD = Scripts.FetchMyData(myOpenedTunnel, "departments", new string[] { "dept_name" }, new string[] { "dept_id" }, new string[] { $"{deptId}" }, "=", "and");
 

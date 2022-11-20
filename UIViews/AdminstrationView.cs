@@ -62,7 +62,8 @@ namespace AccioInventory.UIViews
                     miniVisibleToolsBoxUsers.Visible = true;
                     miniVisibleToolsBoxUsers.TopMost = true;
                     miniVisibleToolsBoxUsers.FormClosed += (o, p) => { AdminstrationView.UsersToolBoxVisible = false; };
-
+                    miniVisibleToolsBoxUsers.MaximizeBox = false;
+                    miniVisibleToolsBoxUsers.Resize += (w,o) => { miniVisibleToolsBoxUsers.Size = new Size(oulineSize.Width + 15, oulineSize.Height + 10); };
 
                 }
             };

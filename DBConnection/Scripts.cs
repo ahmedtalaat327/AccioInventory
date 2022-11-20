@@ -50,7 +50,7 @@ namespace AccioInventory.DBConnection
         /// <param name="oraConn">Object that holds connection</param>
         /// <param name="tablename">Current table to fetch query from</param>
         /// <param name="choosenFields">Fields to collect all data from</param>
-        /// <param name="values">Values to compre with</param>
+        /// <param name="values">Values to compare with</param>
         /// <param name="oper">Cmpare operations</param>
         /// <returns></returns>
         public static OracleCommand FetchMyData(OracleConnection oraConn, string tablename, string[] choosenFields,  string[] whereFields ,string[] values, string oper,string seper)
@@ -134,13 +134,58 @@ namespace AccioInventory.DBConnection
 
             return oldSelect;
         }
-        //still working on it....
-        public static int InsertMyData(OracleConnection oraConn, string tablename)
+    
+        /// <summary>
+        /// Generic Func to add new row to existing database
+        /// </summary>
+        /// <param name="oraConn">Current object that carries connection tunnel</param>
+        /// <param name="tablename">The table in which data row will be inserted</param>
+        /// <param name="columnsNames">Each column that has specific data in the table</param>
+        /// <param name="values">Each value that must be inserted</param>
+        /// <param name="oracleDbTypes">Types of each column</param>
+        /// <returns></returns>
+        public static int InsertMyDataRow(OracleConnection oraConn, string tablename, string[] values)
         {
+            OracleCommand cmd = new OracleCommand();
 
+            string addRowQueryStatement = "insert into "+tablename+" values(";
 
+            for(int p = 0; p < values.Length; p++)
+            {
+                if(p!=values.Length-1)
+                addRowQueryStatement += "?,";
+                else
+                addRowQueryStatement += "?";
 
-            return -1;
+            }
+         
+            /*
+            List<OracleParameter> paramsOra = new List<OracleParameter>();
+
+            int i = 0;
+            foreach(OracleDbType param in oracleDbTypes) {
+                paramsOra.Add(new OracleParameter() { OracleDbType = param, Value = values[i] });
+                i++;
+            }
+
+            foreach(OracleParameter param in paramsOra) { cmd.Parameters.Add(param); }
+            try
+            {
+                cmd.ExecuteNonQuery();
+                return 0;
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show($"{ex}");
+            }
+            */
+            addRowQueryStatement = ReplaceWithMyVals(addRowQueryStatement, values);
+            addRowQueryStatement += ")";
+            cmd.CommandText = addRowQueryStatement;
+            cmd.Connection = oraConn;
+            int aff = cmd.ExecuteNonQuery();
+            return aff;
+ 
         }
 
 
