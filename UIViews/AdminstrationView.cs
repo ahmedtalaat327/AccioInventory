@@ -17,12 +17,19 @@ namespace AccioInventory.UIViews
 {
     public partial class AdminstrationView : UserControl
     {
-
-      public  List<UsersModel> AllUsers  { get; set; }
-
+        /// <summary>
+        /// Collect all users in one list
+        /// </summary>
+        public  List<UsersModel> AllUsers  { get; set; }
+        /// <summary>
+        /// Flag to determines if the window is visible or not?
+        /// </summary>
         private static bool UsersToolBoxVisible { get; set; } = false;
-
-    public AdminstrationView(Control parentPanel)
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="parentPanel">Panel to hold all UI controls</param>
+        public AdminstrationView(Control parentPanel)
         {
             InitializeComponent();
 
@@ -69,7 +76,11 @@ namespace AccioInventory.UIViews
             };
            
         }
-       
+        /// <summary>
+        /// Event fires when the tabe is clicked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void tabControl1_Click(object sender, EventArgs e)
         {
 
@@ -105,6 +116,11 @@ namespace AccioInventory.UIViews
 
 
         }
+        /// <summary>
+        /// Task to load all users
+        /// </summary>
+        /// <param name="myList"></param>
+        /// <returns></returns>
         private Task<List<UsersModel>> LoadingUsersFromDB(List<UsersModel> myList)
         {
             return Task.Run(() => { 
@@ -116,7 +132,7 @@ namespace AccioInventory.UIViews
             OracleDataReader dr = sqlCMD.ExecuteReader();
             if (dr.HasRows)
             {
-
+                  
 
                 while (dr.Read())
                 {

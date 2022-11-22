@@ -1,6 +1,12 @@
-﻿using Oracle.ManagedDataAccess.Client;
+﻿/*
+ * This class acts as a Connection funcs between UI and Oracle DB server and all the queries commands  */
+
+using AccioInventory.Models;
+using Oracle.ManagedDataAccess.Client;
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Data.SqlTypes;
 using System.Windows.Forms;
 
 namespace AccioInventory.DBConnection
@@ -140,9 +146,7 @@ namespace AccioInventory.DBConnection
         /// </summary>
         /// <param name="oraConn">Current object that carries connection tunnel</param>
         /// <param name="tablename">The table in which data row will be inserted</param>
-        /// <param name="columnsNames">Each column that has specific data in the table</param>
         /// <param name="values">Each value that must be inserted</param>
-        /// <param name="oracleDbTypes">Types of each column</param>
         /// <returns></returns>
         public static int InsertMyDataRow(OracleConnection oraConn, string tablename, string[] values)
         {
@@ -183,12 +187,54 @@ namespace AccioInventory.DBConnection
             addRowQueryStatement += ")";
             cmd.CommandText = addRowQueryStatement;
             cmd.Connection = oraConn;
-            int aff = cmd.ExecuteNonQuery();
-            return aff;
+            try
+            {
+                int aff = cmd.ExecuteNonQuery();
+                return aff;
+            }
+            catch (Exception e)
+            {
+                return -1;
+            }
+             
  
         }
+        /// <summary>
+        /// Get the highest no in int columns
+        /// </summary>
+        /// <param name="oraConn">Curent connection object</param>
+        /// <param name="tableName">Table name</param>
+        /// <param name="columnName">Column name in that table</param>
+        /// <returns></returns>
+        public static int GetHighestNOofRow(OracleConnection oraConn, string tableName,string columnName)
+        {
+            OracleCommand cmd = new OracleCommand();
+            cmd.Connection = oraConn;
+
+            string getCountQueryStatement = "select max(" + columnName + ") from "+tableName;
+            cmd.CommandText = getCountQueryStatement;
+
+            try
+            {
+                OracleDataReader dr = cmd.ExecuteReader();
+                if (dr.HasRows)
+                {
 
 
-        
+                    while (dr.Read())
+                    {
+                        return Int32.Parse(dr[0].ToString());
+                    }
+                }
+               
+            }
+            catch (Exception e)
+            {
+               MessageBox.Show(e.Message);
+            }
+
+            return -1;
+        }
+
     }
 }
