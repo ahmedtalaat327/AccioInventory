@@ -6,10 +6,7 @@ using Oracle.ManagedDataAccess.Client;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -79,8 +76,8 @@ namespace AccioInventory.UIViews
         /// <summary>
         /// Event fires when the tabe is clicked
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">object clicked</param>
+        /// <param name="e">event used in clicking</param>
         private void tabControl1_Click(object sender, EventArgs e)
         {
 
@@ -119,14 +116,14 @@ namespace AccioInventory.UIViews
         /// <summary>
         /// Task to load all users
         /// </summary>
-        /// <param name="myList"></param>
+        /// <param name="myList">current list object</param>
         /// <returns></returns>
         private Task<List<UsersModel>> LoadingUsersFromDB(List<UsersModel> myList)
         {
             return Task.Run(() => { 
             var myOpenedTunnel = AccioEasyHelpers.ReadParamsThenConnectToDB(false);
 
-            var sqlCMD = Scripts.FetchMyData(myOpenedTunnel, "users", new string[] { "user_id", "user_full_name", "user_password", "user_auth", "user_full_name","dept_id" }, new string[] { "user_id", "user_auth" }, new string[] { "999", "'power'" }, "!=", "and");
+            var sqlCMD = Scripts.FetchMyData(myOpenedTunnel, "users", new string[] { "user_id", "user_name","user_full_name", "user_password", "user_auth", "user_full_name","dept_id" }, new string[] { "user_id", "user_auth" }, new string[] { "999", "'power'" }, "!=", "and");
 
 
             OracleDataReader dr = sqlCMD.ExecuteReader();
@@ -136,7 +133,7 @@ namespace AccioInventory.UIViews
 
                 while (dr.Read())
                 {
-                        myList.Add(new UsersModel() { Id = Int32.Parse(dr["user_id"].ToString()), FullName = dr["user_full_name"].ToString() ,DepartmentId = Int32.Parse(dr["dept_id"].ToString()) });
+                        myList.Add(new UsersModel() { Id = Int32.Parse(dr["user_id"].ToString()), UserName = dr["user_name"].ToString(), FullName = dr["user_full_name"].ToString(), Password = dr["user_password"].ToString(),  DepartmentId = Int32.Parse(dr["dept_id"].ToString()) });
 
                 }
             }

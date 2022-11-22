@@ -1,12 +1,9 @@
 ﻿/*
  * This class acts as a Connection funcs between UI and Oracle DB server and all the queries commands  */
 
-using AccioInventory.Models;
 using Oracle.ManagedDataAccess.Client;
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Data.SqlTypes;
 using System.Windows.Forms;
 
 namespace AccioInventory.DBConnection

@@ -41,6 +41,11 @@ namespace AccioInventory.UIViews
             var cpm_name = AccioEasyHelpers.GetTxTBettwen(data[6], "::", ",");
 
             this.label5.Text = cpm_name;
+
+            var version = AccioEasyHelpers.GetTxTBettwen(data[7],"::", ",");
+
+            this.label9.Text = "Version: "+ version;
+
          }
       
 

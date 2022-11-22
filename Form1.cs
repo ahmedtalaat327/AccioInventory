@@ -2,7 +2,6 @@
 using AccioInventory.UIViews;
 using System;
 using System.Drawing;
-using System.Net;
 using System.Windows.Forms;
 
 namespace AccioInventory
@@ -92,7 +91,7 @@ namespace AccioInventory
         {
             //show login..
             var loginview = new LoginView(fr);
-            loginForm = new Form { Size = loginview.Size };
+            loginForm = new Form { Size = new Size(loginview.Size.Width, loginview.Size.Height+20) };
             loginForm.Controls.Add(loginview);
             loginForm.MinimizeBox = false;
             loginForm.MaximizeBox = false;

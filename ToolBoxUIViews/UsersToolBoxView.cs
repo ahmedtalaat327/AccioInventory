@@ -9,6 +9,7 @@ using System.Windows.Forms;
 
 namespace AccioInventory.ToolBoxUIViews
 {
+
     public partial class UsersToolBoxView : UserControl
     {
         /// <summary>
@@ -30,7 +31,7 @@ namespace AccioInventory.ToolBoxUIViews
         /// Task func using managed and pooled threads to collect data while using UI 
         /// Loading all deps names to combobox
         /// </summary>
-        /// <param name="depsList"></param>
+        /// <param name="depsList">current list object</param>
         /// <returns></returns>
         private Task<List<string>> LoadDepsToComboBox(List<string> depsList)
         {
@@ -67,8 +68,8 @@ namespace AccioInventory.ToolBoxUIViews
         /// <summary>
         /// Event trigged or fired by dropping down combobox menu / windows
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">object button to be clicked</param>
+        /// <param name="e">event used in fireing clicking up</param>
         private void comboBox2_DropDown(object sender, EventArgs e)
         {
             Task t = null;
@@ -95,8 +96,8 @@ namespace AccioInventory.ToolBoxUIViews
         /// <summary>
         /// Submit button event while adding new User..
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">object buttton clicked</param>
+        /// <param name="e">even t to be used</param>
         private  void button1_Click(object sender, EventArgs e)
         {
 
@@ -142,13 +143,13 @@ namespace AccioInventory.ToolBoxUIViews
         /// <summary>
         /// Real function using tasks 
         /// </summary>
-        /// <param name="userName"></param>
-        /// <param name="fullName"></param>
-        /// <param name="pass"></param>
+        /// <param name="userName">user name in text box</param>
+        /// <param name="fullName">full name in  // //</param>
+        /// <param name="pass">password in text box</param>
         /// <param name="inputDate"></param>
-        /// <param name="telNo"></param>
-        /// <param name="selectedAuth"></param>
-        /// <param name="selectedDept"></param>
+        /// <param name="telNo">telephone number</param>
+        /// <param name="selectedAuth">user level authority</param>
+        /// <param name="selectedDept">user current department</param>
         /// <returns></returns>
         private Task<int> SetNewUser(string userName, string fullName, string pass, DateTime inputDate, int telNo, string selectedAuth, int selectedDept)
         {
