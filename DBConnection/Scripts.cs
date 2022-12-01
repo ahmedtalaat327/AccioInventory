@@ -1,5 +1,8 @@
 ﻿/*
- * This class acts as a Connection funcs between UI and Oracle DB server and all the queries commands  */
+ * This class acts as a Connection funcs between UI and Oracle DB server and all the queries commands.
+ * This file is written to be compitable with any C# or dotNet projects.
+ * 
+ */
 
 using Oracle.ManagedDataAccess.Client;
 using System;
