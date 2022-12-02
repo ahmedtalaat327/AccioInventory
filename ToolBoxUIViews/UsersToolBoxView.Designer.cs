@@ -40,15 +40,17 @@
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.textBox6 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.label9 = new System.Windows.Forms.Label();
             this.textBox5 = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
@@ -56,6 +58,12 @@
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.button3 = new System.Windows.Forms.Button();
+            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.comboBox4 = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -111,6 +119,7 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 18.51852F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(381, 243);
             this.tableLayoutPanel2.TabIndex = 0;
+            this.tableLayoutPanel2.MouseEnter += new System.EventHandler(this.tableLayoutPanel2_MouseEnter);
             // 
             // label7
             // 
@@ -203,6 +212,16 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label8.Image = global::AccioInventory.Properties.Resources.adduser;
+            this.label8.Location = new System.Drawing.Point(275, 105);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(103, 45);
+            this.label8.TabIndex = 16;
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -233,6 +252,8 @@
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33332F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
+            this.tableLayoutPanel3.Controls.Add(this.textBox7, 1, 2);
+            this.tableLayoutPanel3.Controls.Add(this.textBox6, 1, 1);
             this.tableLayoutPanel3.Controls.Add(this.label2, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel4, 1, 0);
             this.tableLayoutPanel3.Controls.Add(this.label10, 2, 1);
@@ -242,6 +263,12 @@
             this.tableLayoutPanel3.Controls.Add(this.label13, 0, 3);
             this.tableLayoutPanel3.Controls.Add(this.label14, 0, 4);
             this.tableLayoutPanel3.Controls.Add(this.label15, 0, 5);
+            this.tableLayoutPanel3.Controls.Add(this.label16, 2, 3);
+            this.tableLayoutPanel3.Controls.Add(this.button3, 2, 5);
+            this.tableLayoutPanel3.Controls.Add(this.textBox8, 1, 3);
+            this.tableLayoutPanel3.Controls.Add(this.textBox9, 2, 4);
+            this.tableLayoutPanel3.Controls.Add(this.comboBox3, 1, 4);
+            this.tableLayoutPanel3.Controls.Add(this.comboBox4, 1, 5);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 252);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
@@ -254,6 +281,21 @@
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(381, 244);
             this.tableLayoutPanel3.TabIndex = 1;
+            this.tableLayoutPanel3.MouseEnter += new System.EventHandler(this.tableLayoutPanel3_MouseEnter);
+            // 
+            // textBox7
+            // 
+            this.textBox7.Location = new System.Drawing.Point(129, 83);
+            this.textBox7.Name = "textBox7";
+            this.textBox7.Size = new System.Drawing.Size(118, 20);
+            this.textBox7.TabIndex = 13;
+            // 
+            // textBox6
+            // 
+            this.textBox6.Location = new System.Drawing.Point(129, 43);
+            this.textBox6.Name = "textBox6";
+            this.textBox6.Size = new System.Drawing.Size(121, 20);
+            this.textBox6.TabIndex = 12;
             // 
             // label2
             // 
@@ -297,16 +339,6 @@
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(66, 20);
             this.textBox5.TabIndex = 1;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label8.Image = global::AccioInventory.Properties.Resources.adduser;
-            this.label8.Location = new System.Drawing.Point(275, 105);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(103, 45);
-            this.label8.TabIndex = 16;
             // 
             // label10
             // 
@@ -355,7 +387,7 @@
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(120, 40);
             this.label13.TabIndex = 6;
-            this.label13.Text = "label13";
+            this.label13.Text = "Password";
             // 
             // label14
             // 
@@ -365,7 +397,7 @@
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(120, 40);
             this.label14.TabIndex = 7;
-            this.label14.Text = "label14";
+            this.label14.Text = "Preivilage";
             // 
             // label15
             // 
@@ -375,7 +407,56 @@
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(120, 44);
             this.label15.TabIndex = 8;
-            this.label15.Text = "label15";
+            this.label15.Text = "Department";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.label16.Location = new System.Drawing.Point(256, 147);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(122, 13);
+            this.label16.TabIndex = 9;
+            this.label16.Text = "Tel-No";
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(256, 203);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 11;
+            this.button3.Text = "Update";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // textBox8
+            // 
+            this.textBox8.Location = new System.Drawing.Point(129, 123);
+            this.textBox8.Name = "textBox8";
+            this.textBox8.Size = new System.Drawing.Size(118, 20);
+            this.textBox8.TabIndex = 14;
+            // 
+            // textBox9
+            // 
+            this.textBox9.Location = new System.Drawing.Point(256, 163);
+            this.textBox9.Name = "textBox9";
+            this.textBox9.Size = new System.Drawing.Size(122, 20);
+            this.textBox9.TabIndex = 15;
+            // 
+            // comboBox3
+            // 
+            this.comboBox3.FormattingEnabled = true;
+            this.comboBox3.Location = new System.Drawing.Point(129, 163);
+            this.comboBox3.Name = "comboBox3";
+            this.comboBox3.Size = new System.Drawing.Size(121, 21);
+            this.comboBox3.TabIndex = 16;
+            // 
+            // comboBox4
+            // 
+            this.comboBox4.FormattingEnabled = true;
+            this.comboBox4.Location = new System.Drawing.Point(129, 203);
+            this.comboBox4.Name = "comboBox4";
+            this.comboBox4.Size = new System.Drawing.Size(121, 21);
+            this.comboBox4.TabIndex = 17;
             // 
             // UsersToolBoxView
             // 
@@ -425,5 +506,13 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.ComboBox comboBox4;
     }
 }

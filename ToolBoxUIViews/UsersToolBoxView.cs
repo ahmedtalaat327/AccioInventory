@@ -9,7 +9,13 @@ using System.Windows.Forms;
 
 namespace AccioInventory.ToolBoxUIViews
 {
-
+    public enum UsersPanels
+    {
+        None,
+        addPanel,
+        editPanel,
+        delPanel
+    }
     public partial class UsersToolBoxView : UserControl
     {
         /// <summary>
@@ -17,15 +23,23 @@ namespace AccioInventory.ToolBoxUIViews
         /// </summary>
         public List<string> AllDepts { get; set; }
         /// <summary>
+        /// flag to meausre mouse effect on each panel
+        /// </summary>
+        private UsersPanels UsersPanelsEffected { get; set; } = UsersPanels.None;
+        /// <summary>
+        /// hold all three panels
+        /// </summary>
+        private List<Control> AllPanels { get; set; } = new List<Control>();    
+        /// <summary>
         /// Constructor
         /// </summary>
         public UsersToolBoxView()
         {
             InitializeComponent();
 
-
-
-
+            AllPanels.Add(tableLayoutPanel2);
+            AllPanels.Add(tableLayoutPanel3);
+            AllPanels.Add(tableLayoutPanel4);
         }
         /// <summary>
         /// Task func using managed and pooled threads to collect data while using UI 
@@ -186,6 +200,43 @@ namespace AccioInventory.ToolBoxUIViews
 
         }
 
-        
+        /// <summary>
+        /// if mouse entered add panel
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void tableLayoutPanel2_MouseEnter(object sender, EventArgs e)
+        {
+            DisableWhatPanelUsed(sender);
+            UsersPanelsEffected = UsersPanels.addPanel;
+        }
+
+        /// <summary>
+        /// if mouse entered edit panel
+        /// </summary>
+        /// <param name="sender">current panel</param>
+        /// <param name="e"></param>
+        private void tableLayoutPanel3_MouseEnter(object sender, EventArgs e)
+        {
+            DisableWhatPanelUsed(sender);
+            UsersPanelsEffected = UsersPanels.editPanel;
+        }
+
+        private void DisableWhatPanelUsed(object sender) {
+            AllPanels.ForEach((Control ctrlPan) => {
+                if(ctrlPan.Equals ((sender) as Control))
+                {
+                    AccioEasyHelpers.AllInludedControls(ctrlPan).ForEach((Control c) => { c.Enabled = true; });
+
+                }
+                else
+                {
+                    AccioEasyHelpers.AllInludedControls(ctrlPan).ForEach((Control c) => { c.Enabled = false; });
+                }
+
+            });
+
+        }
+
     }
 }

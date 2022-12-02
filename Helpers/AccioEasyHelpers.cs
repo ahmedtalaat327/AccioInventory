@@ -1,8 +1,10 @@
 ﻿using AccioInventory.DBConnection;
 using Oracle.ManagedDataAccess.Client;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 
 namespace AccioInventory.Helpers
 {
@@ -33,16 +35,16 @@ namespace AccioInventory.Helpers
         /// <returns></returns>
         public static string MeExistanceLocation()
         {
-           return System.Reflection.Assembly.GetEntryAssembly().Location;
+            return System.Reflection.Assembly.GetEntryAssembly().Location;
         }
         public static string[] ReadTxTFiles(string pathToFile)
         {
             List<string> data = new List<string>();
 
-          
+
             data.AddRange(System.IO.File.ReadAllLines(pathToFile));
 
-            
+
 
             return data.ToArray();
         }
@@ -83,5 +85,33 @@ namespace AccioInventory.Helpers
 
             return Scripts.TestConnection(new[] { server_adress, port, "store", "store" }, autoclose);
         }
+        /// <summary>
+        /// Will return all controls
+        /// </summary>
+        /// <param name="Parent"></param>
+        /// <returns></returns>
+        public static List<Control> AllInludedControls(Control ParentCntl)
+        {
+
+            List<Control> allCNTRL = new List<Control>(new Control[0]);
+
+            foreach (Control ChildCntl in ParentCntl.Controls)
+            {
+                allCNTRL.Add(ChildCntl);
+
+                
+                if (ChildCntl.HasChildren && ChildCntl.GetType() == typeof(TableLayoutPanel))
+                {
+                    allCNTRL.AddRange(AllInludedControls(ChildCntl));
+                }
+
+          
+            }
+
+
+            return allCNTRL;
+
+        }
+         
     }
 }
