@@ -203,12 +203,13 @@ namespace AccioInventory.ToolBoxUIViews
         /// <summary>
         /// if mouse entered add panel
         /// </summary>
-        /// <param name="sender"></param>
+        /// <param name="sender">current panel</param>
         /// <param name="e"></param>
         private void tableLayoutPanel2_MouseEnter(object sender, EventArgs e)
         {
             DisableWhatPanelUsed(sender);
             UsersPanelsEffected = UsersPanels.addPanel;
+          
         }
 
         /// <summary>
@@ -219,19 +220,26 @@ namespace AccioInventory.ToolBoxUIViews
         private void tableLayoutPanel3_MouseEnter(object sender, EventArgs e)
         {
             DisableWhatPanelUsed(sender);
+            //due to bug we will activate them manually ..
+            label9.Enabled = true;
+            textBox5.Enabled = true;
+      
             UsersPanelsEffected = UsersPanels.editPanel;
         }
-
+        /// <summary>
+        /// Generic func to disable non-focused panel and re-focus the one we neeed.
+        /// </summary>
+        /// <param name="sender">panel as controler object</param>
         private void DisableWhatPanelUsed(object sender) {
             AllPanels.ForEach((Control ctrlPan) => {
                 if(ctrlPan.Equals ((sender) as Control))
                 {
-                    AccioEasyHelpers.AllInludedControls(ctrlPan).ForEach((Control c) => { c.Enabled = true; });
+                    AccioEasyHelpers.AllInludedControls(ctrlPan, new List<Control>(new Control[0])).ForEach((Control c) => { c.Enabled = true; });
 
                 }
                 else
                 {
-                    AccioEasyHelpers.AllInludedControls(ctrlPan).ForEach((Control c) => { c.Enabled = false; });
+                    AccioEasyHelpers.AllInludedControls(ctrlPan, new List<Control>(new Control[0])).ForEach((Control c) => { c.Enabled = false; });
                 }
 
             });

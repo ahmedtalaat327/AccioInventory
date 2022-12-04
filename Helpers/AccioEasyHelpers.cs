@@ -90,26 +90,27 @@ namespace AccioInventory.Helpers
         /// </summary>
         /// <param name="Parent"></param>
         /// <returns></returns>
-        public static List<Control> AllInludedControls(Control ParentCntl)
+        public static List<Control> AllInludedControls(Control ParentCntl,List<Control> Ctrlslist)
         {
 
-            List<Control> allCNTRL = new List<Control>(new Control[0]);
+         
 
             foreach (Control ChildCntl in ParentCntl.Controls)
             {
-                allCNTRL.Add(ChildCntl);
+                Ctrlslist.Add(ChildCntl);
 
                 
                 if (ChildCntl.HasChildren && ChildCntl.GetType() == typeof(TableLayoutPanel))
                 {
-                    allCNTRL.AddRange(AllInludedControls(ChildCntl));
+                    Ctrlslist.AddRange(AllInludedControls(ChildCntl, Ctrlslist));
+                    
                 }
 
           
             }
 
 
-            return allCNTRL;
+            return Ctrlslist;
 
         }
          
