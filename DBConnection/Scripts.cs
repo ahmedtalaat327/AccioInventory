@@ -235,6 +235,19 @@ namespace AccioInventory.DBConnection
 
             return -1;
         }
-
+        /// <summary>
+        /// Update selected row depending on one condition [one column]
+        /// </summary>
+        /// <param name="oraConn">Current connection object</param>
+        /// <param name="tablename">Table name</param>
+        /// <param name="choosenCols">columns used as to be edited in command</param>
+        /// <param name="newVals">New values to be added instead of old one</param>
+        /// <param name="conditionCol">Column used as condition</param>
+        /// <param name="conditionVal">Value used in the condition with it's column name</param>
+        /// <returns></returns>
+        public static int EditMyDataRow(OracleConnection oraConn, string tablename, string[] choosenCols, string[] newVals,string conditionCol,string conditionVal)
+        {
+            return -1;   
+        }
     }
 }
