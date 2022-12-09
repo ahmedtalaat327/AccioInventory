@@ -1,18 +1,33 @@
 # AccioInventory
 Welcome to Accio open source inventory system written to simplify all store needs. </br></br></br>
 <p align="center">
-<a href="https://imgbb.com/" align="center"><img src="https://i.ibb.co/7S1fgjB/acci-400x400-1.jpg" alt="acci-400x400-1" style="width: 115px;  display: block;
+<a href="https://imgbb.com/" align="center"><img src="https://i.ibb.co/7S1fgjB/acci-400x400-1.jpg" alt="acci-400x400-1" style="border-radius:54px; width: 115px;  display: block;
   margin-left: auto;
   margin-right: auto;"></a>
   </p>
-
 </br>
-Preview
+
+<!-- ABOUT THE PROJECT -->
+## About The Project: 💼</br>
+* This idea is not new but, Many want to implement </br>web based systems in desktop application actually</br>in windows env. for more speed and reliability</br>here we use C sharp as a main lang with some dlls and tweaks.
+
 </br></br>
 
+<!-- ABOUT THE PROJECT -->
+## Database Version: 💉</br>
+* Here we use <a href="https://en.wikipedia.org/wiki/Oracle_Database">Oracle</a> Database through Oracle with (ManagedDataAccess.dll) this library can be used as 
+a connection object and execute all sql commands as string.
+
+</br>
+
+<!-- SCREENS -->
+## Screens: 🫡</br>
+
+* Login..
 <a href="https://ibb.co/fXKxrHT"><img src="https://i.ibb.co/kGrSqXP/Screenshot-64.png" alt="Screenshot-64" ></a>
 
 </br>
+* More is comming..
 <a href="https://ibb.co/W61yzXr"><img src="https://i.ibb.co/9NjT40x/Screenshot-66.png" alt="Screenshot-66" border="0"></a>
 </br>
 

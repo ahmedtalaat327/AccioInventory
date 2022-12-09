@@ -247,6 +247,17 @@ namespace AccioInventory.DBConnection
         /// <returns></returns>
         public static int EditMyDataRow(OracleConnection oraConn, string tablename, string[] choosenCols, string[] newVals,string conditionCol,string conditionVal)
         {
+            OracleCommand cmd = new OracleCommand();
+
+            string addRowQueryStatement = "update " + tablename + "set ";
+
+            //for loop for putting columns names
+
+
+            cmd.Connection = oraConn;
+
+
+
             return -1;   
         }
     }
