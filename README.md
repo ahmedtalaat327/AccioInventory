@@ -29,9 +29,9 @@ a connection object and execute all sql commands as string.
 <!-- VIDEO -->
 ## VIDEO: 🫡</br>
 <div>
-      <a href="https://www.youtube.com/embed/r95LhQzBCRA">
-         <img src="https://www.worldkidneyday.org/wp-content/uploads/2020/09/2-1536x1213.png" style="width:100%;">
-      </a>
+<a href="https://www.youtube.com/embed/r95LhQzBCRA">Go to youtube 👉</a> 
+
+    
 </div>
 
  
