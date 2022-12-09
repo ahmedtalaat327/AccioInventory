@@ -21,13 +21,13 @@ a connection object and execute all sql commands as string.
 </br>
 
 <!-- SCREENS -->
-## Screens: 🫡</br>
+## Screens: 📷</br>
 
 * Login.. </br>
 <a href="https://ibb.co/fXKxrHT"><img src="https://i.ibb.co/kGrSqXP/Screenshot-64.png" alt="Screenshot-64" ></a>
 
 <!-- VIDEO -->
-## VIDEO: 🫡</br>
+## VIDEO: 📹</br>
 <div>
 <a href="https://www.youtube.com/embed/r95LhQzBCRA">Go to youtube 👉</a> 
 
@@ -37,7 +37,7 @@ a connection object and execute all sql commands as string.
  
 </br>
 
-What you need to know:. </br>
+What you need to know:.🫡 </br>
 #1 this SW using database managed dll for oracle version 10g.<br>
 #2 you should know how to build all tables to act inside scripts.<br>
 #3 working in adding .cs file to handle main SQL commands and quiries.<br>
