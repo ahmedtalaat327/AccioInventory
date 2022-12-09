@@ -26,14 +26,10 @@ a connection object and execute all sql commands as string.
 * Login.. </br>
 <a href="https://ibb.co/fXKxrHT"><img src="https://i.ibb.co/kGrSqXP/Screenshot-64.png" alt="Screenshot-64" ></a>
 
-* More is comming..
-<a href="https://ibb.co/W61yzXr"><img src="https://i.ibb.co/9NjT40x/Screenshot-66.png" alt="Screenshot-66"></a>
+<!-- VIDEO -->
+## VIDEO: 🫡</br>
 
-
-
-
-
-
+<iframe width="1303" height="480" src="https://www.youtube.com/embed/r95LhQzBCRA" title="Data Entry Accio Project Open Source C Sharp C#" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </br>
 
 What you need to know:. </br>
