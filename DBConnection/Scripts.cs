@@ -245,7 +245,7 @@ namespace AccioInventory.DBConnection
         /// <param name="conditionCol">Column used as condition</param>
         /// <param name="conditionVal">Value used in the condition with it's column name</param>
         /// <returns></returns>
-        public static int EditMyDataRow(OracleConnection oraConn, string tablename, string[] choosenCols, string[] newVals,string conditionCol,string conditionVal)
+        public static int EditMyDataRow(OracleConnection oraConn, string tablename, string[] updatedFields, string[] updateValues,string[] conditionCol,string conditionVal)
         {
             OracleCommand cmd = new OracleCommand();
 

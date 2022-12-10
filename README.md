@@ -29,7 +29,7 @@ a connection object and execute all sql commands as string.
 <a href="https://ibb.co/mqWyVnH"><img src="https://i.ibb.co/QNwH3W6/Screenshot-70.png" alt="Screenshot-70" border="0"></a>
 
 <!-- VIDEO -->
-## VIDEO: 📹</br>
+## Video: 📹</br>
 <div>
 <a href="https://www.youtube.com/embed/r95LhQzBCRA">Go to youtube 👉</a> 
 
@@ -48,3 +48,7 @@ Very Impertant!</br>
 #1 first thing first you must build your database.</br>
 #2 I will put down the structure script you may need to change it.</br>
 #3 there is a file called 'params.info' its for intit the current connection.</br>
+<!-- VIDEO -->
+## To Do: 📹</br>
+- [ ] Add params file in the project.
+- [x] Convert Scripts.cs to .dll library.
