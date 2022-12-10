@@ -236,16 +236,18 @@ namespace AccioInventory.DBConnection
             return -1;
         }
         /// <summary>
-        /// Update selected row depending on one condition [one column]
+        /// Update selected row depending on one condition or more conditions.
         /// </summary>
         /// <param name="oraConn">Current connection object</param>
         /// <param name="tablename">Table name</param>
-        /// <param name="choosenCols">columns used as to be edited in command</param>
-        /// <param name="newVals">New values to be added instead of old one</param>
-        /// <param name="conditionCol">Column used as condition</param>
-        /// <param name="conditionVal">Value used in the condition with it's column name</param>
+        /// <param name="updatedFields">Choosen columns names</param>
+        /// <param name="updateValues">New values to be replaced</param>
+        /// <param name="whereFields">Condition columns names</param>
+        /// <param name="whereValues">Condition Values</param>
+        /// <param name="oper">Operator used in comparison in condition form</param>
+        /// <param name="seper">seperator</param>
         /// <returns></returns>
-        public static int EditMyDataRow(OracleConnection oraConn, string tablename, string[] updatedFields, string[] updateValues,string[] conditionCol,string conditionVal)
+        public static int EditMyDataRow(OracleConnection oraConn, string tablename, string[] updatedFields, string[] updateValues,string[] whereFields, string[] whereValues,string oper,string seper)
         {
             OracleCommand cmd = new OracleCommand();
 
