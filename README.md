@@ -49,6 +49,6 @@ Very Impertant!</br>
 #2 I will put down the structure script you may need to change it.</br>
 #3 there is a file called 'params.info' its for intit the current connection.</br>
 <!-- VIDEO -->
-## To Do: 📹</br>
-- [ ] Add params file in the project.
-- [x] Convert Scripts.cs to .dll library.
+## To Do: ⛏️🤦</br>
+- [x] Add params file in the project.
+- [ ] Convert Scripts.cs to .dll library.
