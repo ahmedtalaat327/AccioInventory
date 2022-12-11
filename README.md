@@ -49,6 +49,17 @@ Very Impertant!</br>
 #2 I will put down the structure script you may need to change it.</br>
 #3 there is a file called 'params.info' its for intit the current connection.</br>
 <a href="https://imgbb.com/"><img src="https://i.ibb.co/ZmY8D0W/expl.png" alt="expl" border="0"></a>
+````
+ 
+**this file is to initialize the current database connnection to make app connect to its server**
+**don't try to move lines down or up this will miss the whole file just change data values**
+[
+#server_ip::127.0.0.1,
+#port::1521,
+#company_name::Haam Corporation,
+]
+
+````
 <!-- VIDEO -->
 ## To Do: ⛏️🤦</br>
 - [x] Add params file in the project.
