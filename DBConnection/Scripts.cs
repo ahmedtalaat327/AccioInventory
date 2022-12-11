@@ -89,10 +89,10 @@ namespace AccioInventory.DBConnection
         /// <summary>
         /// Speed way to re-use defintion data tables after where in sql statements.
         /// </summary>
-        /// <param name="sqlOldCommand"></param>
-        /// <param name="fields"></param>
-        /// <param name="oper"></param>
-        /// <param name="seper"></param>
+        /// <param name="sqlOldCommand">Old sql string without any where</param>
+        /// <param name="fields">Fields names</param>
+        /// <param name="oper">operator</param>
+        /// <param name="seper">seperator</param>
         /// <returns></returns>
         private static string WherePartQueryTxt(string sqlOldCommand, string[] fields,string oper,string seper) {
 
@@ -110,8 +110,8 @@ namespace AccioInventory.DBConnection
         /// This method is a replacement for setting values in oracle sql satements.
         /// and setsring in java language!
         /// </summary>
-        /// <param name="oldSelect"></param>
-        /// <param name="vals"></param>
+        /// <param name="oldSelect">Old sql string including where with or without ?</param>
+        /// <param name="vals">Replacable vals instead of ?</param>
         /// <returns></returns>
         private static string ReplaceWithMyVals(string oldSelect, string[] vals)
         {
@@ -251,9 +251,14 @@ namespace AccioInventory.DBConnection
         {
             OracleCommand cmd = new OracleCommand();
 
-            string addRowQueryStatement = "update " + tablename + "set ";
+            string editRowQueryStatement = "update " + tablename + "set ";
 
             //for loop for putting columns names
+            string sqlWithWherePart = WherePartQueryTxt(editRowQueryStatement, updatedFields, "=", ",");
+            //for loop for putting values in set update part instead of ?
+            string sqlWithValsInWherePart = ReplaceWithMyVals(sqlWithWherePart, updateValues);
+            //for loop for putting where and where fields
+            
 
 
             cmd.Connection = oraConn;

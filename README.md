@@ -48,6 +48,7 @@ Very Impertant!</br>
 #1 first thing first you must build your database.</br>
 #2 I will put down the structure script you may need to change it.</br>
 #3 there is a file called 'params.info' its for intit the current connection.</br>
+<a href="https://imgbb.com/"><img src="https://i.ibb.co/ZmY8D0W/expl.png" alt="expl" border="0"></a>
 <!-- VIDEO -->
 ## To Do: ⛏️🤦</br>
 - [x] Add params file in the project.
