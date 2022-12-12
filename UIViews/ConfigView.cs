@@ -1,6 +1,7 @@
 ﻿using AccioInventory.Helpers;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
@@ -9,6 +10,7 @@ namespace AccioInventory.UIViews
 {
     public partial class ConfigView : UserControl
     {
+        private string VersionNo { get; set; } = "0.0.0";
         public ConfigView(Control parentPanel)
         {
             InitializeComponent();
@@ -43,6 +45,7 @@ namespace AccioInventory.UIViews
             var server_adress = AccioEasyHelpers.GetTxTBettwen(data[4], "::", ",");
             var port = AccioEasyHelpers.GetTxTBettwen(data[5], "::", ",");
             var comp = AccioEasyHelpers.GetTxTBettwen(data[6], "::", ",");
+            VersionNo = AccioEasyHelpers.GetTxTBettwen(data[7], "::", ",");
 
             this.textBox1.Text = server_adress;
             this.textBox2.Text = "st*** => only developer can change it contact your seller!";
@@ -64,7 +67,8 @@ namespace AccioInventory.UIViews
             allData.Add("**don't try to move lines down or up this will miss the whole file just change data values**\n[\n");
             allData.Add($"#server_ip::{this.textBox1.Text},\n");
             allData.Add($"#port::{this.textBox4.Text},\n");
-            allData.Add($"#company_name::{this.textBox5.Text},\n]");
+            allData.Add($"#company_name::{this.textBox5.Text},\n");
+            allData.Add($"#version::{this.VersionNo},\n]");
 
             string oneLine = "";
             foreach(string item in allData)
