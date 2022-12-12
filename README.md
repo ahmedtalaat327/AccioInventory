@@ -60,6 +60,7 @@ params.info :
 #server_ip::127.0.0.1,
 #port::1521,
 #company_name::Haam Corporation,
+#version::1.1.0,
 ]
 
 ````
