@@ -258,14 +258,30 @@ namespace AccioInventory.DBConnection
             //for loop for putting values in set update part instead of ?
             string sqlWithValsInWherePart = ReplaceWithMyVals(sqlWithWherePart, updateValues);
             //for loop for putting where and where fields
-            
+            string sqlWithWherePart_Real_One = WherePartQueryTxt(sqlWithValsInWherePart, whereFields, oper, seper);
+            //for loop for putting values in after where update part instead of ?
+            string sqlWithValsInWherePart_Real_One = ReplaceWithMyVals(sqlWithWherePart_Real_One, whereValues);
+
+            string completeSQL = sqlWithValsInWherePart_Real_One;
+
+            cmd.CommandText = completeSQL;
+
+            try
+            {
+                int aff = cmd.ExecuteNonQuery();
+                return aff;
+            }
+            catch (Exception e)
+            {
+                return -1;
+            }
 
 
             cmd.Connection = oraConn;
 
 
 
-            return -1;   
+              
         }
     }
 }

@@ -9,7 +9,7 @@ Welcome to Accio open source inventory system written to simplify all store need
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project: 💼</br>
-* This idea is not new but, Many want to implement </br>web based systems in desktop application actually</br>in windows env. for more speed and reliability</br>here we use C sharp as a main lang with some dlls and tweaks.
+* This idea is not new but, Many want to implement web based systems in desktop application actually in windows env. for more speed and reliability</br>here we use C sharp as a main lang with some dlls and tweaks.
 
 </br></br>
 
