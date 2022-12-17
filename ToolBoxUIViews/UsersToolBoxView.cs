@@ -258,6 +258,11 @@ namespace AccioInventory.ToolBoxUIViews
         /// <param name="e"></param>
         private async void button2_Click(object sender, EventArgs e)
         {
+            if (textBox5.Text.Length <= 0)
+            {
+                return;
+            }
+
             Task t = null;
             t = new Task(async () => {
                 AllUsers = new List<UsersModel>();
@@ -266,13 +271,15 @@ namespace AccioInventory.ToolBoxUIViews
             if(AllUsers.Count == 1)
             {
                     //dispatcher must be here ..
-                    textBox6.Invoke(new Action(() => { textBox6.Text = AllUsers[0].UserName; }));
+                    this.textBox6.Invoke(new Action(() => { this.textBox6.Text = AllUsers[0].UserName; }));
             }
                 else
            {
                     //not found any user
                     MessageBox.Show("No ID found recheck it again", "No user with this ID");
-           }
+                    this.tableLayoutPanel1.Invoke(new Action(() => {/*reset all controls*/ }));
+                 
+                }
                 if (t.IsCompleted)
                 {
                     Cursor.Current = Cursors.Default;
