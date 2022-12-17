@@ -118,12 +118,12 @@ namespace AccioInventory.UIViews
         /// </summary>
         /// <param name="myList">current list object</param>
         /// <returns></returns>
-        private Task<List<UsersModel>> LoadingUsersFromDB(List<UsersModel> myList)
+        public static Task<List<UsersModel>> LoadingUsersFromDB(List<UsersModel> myList,string conditionIDNo = "999",string conditionOperator = "!=")
         {
             return Task.Run(() => { 
             var myOpenedTunnel = AccioEasyHelpers.ReadParamsThenConnectToDB(false);
 
-            var sqlCMD = Scripts.FetchMyData(myOpenedTunnel, "users", new string[] { "user_id", "user_name","user_full_name", "user_password", "user_auth", "user_full_name","dept_id" }, new string[] { "user_id", "user_auth" }, new string[] { "999", "'power'" }, "!=", "and");
+            var sqlCMD = Scripts.FetchMyData(myOpenedTunnel, "users", new string[] { "user_id", "user_name","user_full_name", "user_password", "user_auth", "user_full_name","dept_id" }, new string[] { "user_id" }, new string[] { conditionIDNo }, conditionOperator, "and");
 
 
             OracleDataReader dr = sqlCMD.ExecuteReader();

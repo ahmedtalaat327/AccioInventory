@@ -1,5 +1,7 @@
 ﻿using AccioInventory.DBConnection;
 using AccioInventory.Helpers;
+using AccioInventory.Models;
+using AccioInventory.UIViews;
 using Oracle.ManagedDataAccess.Client;
 using System;
 using System.Collections.Generic;
@@ -29,10 +31,14 @@ namespace AccioInventory.ToolBoxUIViews
         /// <summary>
         /// hold all three panels
         /// </summary>
-        private List<Control> AllPanels { get; set; } = new List<Control>();    
+        private List<Control> AllPanels { get; set; } = new List<Control>();
         /// <summary>
         /// Constructor
         /// </summary>
+        /// /// <summary>
+        /// Collect all users in one list actually it's one user depending on id to search..
+        /// </summary>
+        public List<UsersModel> AllUsers { get; set; }
         public UsersToolBoxView()
         {
             InitializeComponent();
@@ -246,13 +252,35 @@ namespace AccioInventory.ToolBoxUIViews
 
         }
         /// <summary>
-        /// Search in edit section
+        /// Search in edit / update section
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void button2_Click(object sender, EventArgs e)
+        private async void button2_Click(object sender, EventArgs e)
         {
+            Task t = null;
+            t = new Task(async () => {
+                AllUsers = new List<UsersModel>();
 
+                AllUsers = await AdminstrationView.LoadingUsersFromDB(AllUsers, textBox5.Text, "=");
+            if(AllUsers.Count == 1)
+            {
+                    //dispatcher must be here ..
+                    textBox6.Invoke(new Action(() => { textBox6.Text = AllUsers[0].UserName; }));
+            }
+                else
+           {
+                    //not found any user
+                    MessageBox.Show("No ID found recheck it again", "No user with this ID");
+           }
+                if (t.IsCompleted)
+                {
+                    Cursor.Current = Cursors.Default;
+                    Application.UseWaitCursor = false;
+                }
+
+            });
+            t.Start();
         }
     }
 }
