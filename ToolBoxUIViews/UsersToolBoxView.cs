@@ -271,13 +271,24 @@ namespace AccioInventory.ToolBoxUIViews
             if(AllUsers.Count == 1)
             {
                     //dispatcher must be here ..
-                    this.textBox6.Invoke(new Action(() => { this.textBox6.Text = AllUsers[0].UserName; }));
+                    this.textBox6.Invoke(new Action(() => { this.textBox6.Text = AllUsers[0].UserName; this.button3.Enabled = true; }));
             }
                 else
            {
                     //not found any user
                     MessageBox.Show("No ID found recheck it again", "No user with this ID");
-                    this.tableLayoutPanel1.Invoke(new Action(() => {/*reset all controls*/ }));
+                    this.tableLayoutPanel1.Invoke(new Action(() => {/*reset all controls*/
+                        this.textBox6.Text = "";
+                        this.textBox7.Text = "";
+                        this.textBox8.Text = "";
+                        this.textBox9.Text = "";
+                        if (comboBox3.Items.Count > 0 && comboBox4.Items.Count > 0)
+                        {
+                            this.comboBox3.SelectedIndex = 0;
+                            this.comboBox4.SelectedIndex = 0;
+                        }
+                        this.button3.Enabled = false;
+                    }));
                  
                 }
                 if (t.IsCompleted)

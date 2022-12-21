@@ -124,18 +124,27 @@ namespace AccioInventory.UIViews
             return Task.Run(() => { 
             var myOpenedTunnel = AccioEasyHelpers.ReadParamsThenConnectToDB(false);
 
-            var sqlCMD = Scripts.FetchMyData(myOpenedTunnel, "users", new string[] { "user_id", "user_name","user_full_name", "user_password", "user_auth", "user_full_name","dept_id" }, new string[] { "user_id" }, new string[] { conditionIDNo }, conditionOperator, "and");
+            var sqlCMD = Scripts.FetchMyData(myOpenedTunnel, "users", new string[] { "user_id", "user_name","user_full_name", "user_password", "user_tel","user_seen_date","user_session","user_auth","dept_id" }, new string[] { "user_id" }, new string[] { conditionIDNo }, conditionOperator, "and");
 
 
             OracleDataReader dr = sqlCMD.ExecuteReader();
+
             if (dr.HasRows)
             {
                   
 
                 while (dr.Read())
                 {
-                        myList.Add(new UsersModel() { Id = Int32.Parse(dr["user_id"].ToString()), UserName = dr["user_name"].ToString(), FullName = dr["user_full_name"].ToString(), Password = dr["user_password"].ToString(),  DepartmentId = Int32.Parse(dr["dept_id"].ToString()) });
-
+                        myList.Add(new UsersModel() { Id = Int32.Parse(dr["user_id"].ToString()),
+                            UserName = dr["user_name"].ToString(),
+                            FullName = dr["user_full_name"].ToString(),
+                            Password = dr["user_password"].ToString(),
+                            TelNo = Int32.Parse(dr["user_tel"].ToString()),
+                            LastSeen = (DateTime)dr["user_seen_date"],
+                            UserInSession= dr["user_session"].ToString(),
+                            UserAuthLevel = dr["user_auth"].ToString(),
+                            DepartmentId = Int32.Parse(dr["dept_id"].ToString()) }) ; 
+                         
                 }
             }
 

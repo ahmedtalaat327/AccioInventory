@@ -450,6 +450,7 @@
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(121, 21);
             this.comboBox3.TabIndex = 16;
+            this.comboBox3.Text = "--no data yet--";
             // 
             // comboBox4
             // 
@@ -458,6 +459,7 @@
             this.comboBox4.Name = "comboBox4";
             this.comboBox4.Size = new System.Drawing.Size(121, 21);
             this.comboBox4.TabIndex = 17;
+            this.comboBox4.Text = "--no data yet--";
             // 
             // UsersToolBoxView
             // 
