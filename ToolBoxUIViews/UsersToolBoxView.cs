@@ -268,13 +268,29 @@ namespace AccioInventory.ToolBoxUIViews
                 AllUsers = new List<UsersModel>();
 
                 AllUsers = await AdminstrationView.LoadingUsersFromDB(AllUsers, textBox5.Text, "=");
-            if(AllUsers.Count == 1)
-            {
+
+                if(AllUsers.Count == 1)
+                 {
                     //dispatcher must be here ..
-                    this.textBox6.Invoke(new Action(() => { this.textBox6.Text = AllUsers[0].UserName; this.button3.Enabled = true; }));
-            }
+                    this.tableLayoutPanel3.Invoke(new Action(() => { 
+                        this.textBox6.Text = AllUsers[0].UserName; 
+                        this.textBox7.Text = AllUsers[0].FullName;
+                        this.textBox8.Text = AllUsers[0].Password;
+                        this.textBox9.Text = AllUsers[0].TelNo.ToString();
+                        //check which item should be selected in combobox
+                        for(int i=0;i<this.comboBox3.Items.Count;i++)
+                        {
+                            if (this.comboBox3.Items[i].ToString() == AllUsers[0].UserAuthLevel)
+                            {
+                                this.comboBox3.SelectedIndex = i; 
+                            }
+                        }
+                        
+                        this.button3.Enabled = true;
+                    }));
+                 }
                 else
-           {
+                {
                     //not found any user
                     MessageBox.Show("No ID found recheck it again", "No user with this ID");
                     this.tableLayoutPanel1.Invoke(new Action(() => {/*reset all controls*/
@@ -282,11 +298,10 @@ namespace AccioInventory.ToolBoxUIViews
                         this.textBox7.Text = "";
                         this.textBox8.Text = "";
                         this.textBox9.Text = "";
-                        if (comboBox3.Items.Count > 0 && comboBox4.Items.Count > 0)
-                        {
-                            this.comboBox3.SelectedIndex = 0;
-                            this.comboBox4.SelectedIndex = 0;
-                        }
+                        
+                        this.comboBox3.SelectedIndex = 1;
+                        this.comboBox4.SelectedIndex = 1;
+                        
                         this.button3.Enabled = false;
                     }));
                  

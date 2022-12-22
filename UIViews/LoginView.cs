@@ -101,6 +101,8 @@ namespace AccioInventory.UIViews
                             var auth_Sign_ = (Label)AccioEasyHelpers.GetControlByName(parentForm, "holdAuth");
                             auth_Sign_.Text = "user";
                         }
+                        //here must update insession column by putting yes..
+                        //when he closing the application must update insession again by putting no..
                         myOpenedTunnel.Close();
                         myOpenedTunnel.Dispose();
                         break;
