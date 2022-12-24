@@ -87,6 +87,7 @@ namespace AccioInventory.ToolBoxUIViews
         }
         /// <summary>
         /// Event trigged or fired by dropping down combobox menu / windows
+        /// this for add section users
         /// </summary>
         /// <param name="sender">object button to be clicked</param>
         /// <param name="e">event used in fireing clicking up</param>
@@ -277,7 +278,7 @@ namespace AccioInventory.ToolBoxUIViews
                         this.textBox7.Text = AllUsers[0].FullName;
                         this.textBox8.Text = AllUsers[0].Password;
                         this.textBox9.Text = AllUsers[0].TelNo.ToString();
-                        //check which item should be selected in combobox
+                        //check which item should be selected in combobox for auth-level
                         for(int i=0;i<this.comboBox3.Items.Count;i++)
                         {
                             if (this.comboBox3.Items[i].ToString() == AllUsers[0].UserAuthLevel)
@@ -285,7 +286,37 @@ namespace AccioInventory.ToolBoxUIViews
                                 this.comboBox3.SelectedIndex = i; 
                             }
                         }
-                        
+                        //this part for departments names
+                        //first we laod all depts ids from database 
+                        //then represents all names in string usnig <see cref="UsersModel.DepartmentName"/>
+
+                        Task _t = null;
+                        _t = new Task(async () =>
+                        {
+                            AllDepts = new List<string>();
+
+                            AllDepts = await LoadDepsToComboBox(AllDepts);
+
+                            var bindingList = new BindingList<string>(AllDepts);
+                            var source = new BindingSource(bindingList, null);
+
+                            //dispacher must be here
+                            comboBox4.Invoke(new Action(() => {
+
+                                comboBox4.DataSource = source;
+                                this.comboBox4.SelectedIndex = AllUsers[0].DepartmentId;
+                            }));
+
+                            if (_t.IsCompleted)
+                            {
+                                Cursor.Current = Cursors.Default;
+                                Application.UseWaitCursor = false;
+                            }
+                        });
+                        _t.Start();
+
+                        //then comapre it with all we got and show the chosen one in combobox
+
                         this.button3.Enabled = true;
                     }));
                  }
@@ -299,8 +330,8 @@ namespace AccioInventory.ToolBoxUIViews
                         this.textBox8.Text = "";
                         this.textBox9.Text = "";
                         
-                        this.comboBox3.SelectedIndex = 1;
-                        this.comboBox4.SelectedIndex = 1;
+                        this.comboBox3.SelectedIndex = 0;
+                        this.comboBox4.SelectedIndex = 0;
                         
                         this.button3.Enabled = false;
                     }));
@@ -312,6 +343,38 @@ namespace AccioInventory.ToolBoxUIViews
                     Application.UseWaitCursor = false;
                 }
 
+            });
+            t.Start();
+        }
+        /// <summary>
+        /// Event trigged or fired by dropping down combobox menu / windows
+        /// this for update section users
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void comboBox4_DropDown(object sender, EventArgs e)
+        {
+            Task t = null;
+            t = new Task(async () =>
+            {
+                AllDepts = new List<string>();
+
+                AllDepts = await LoadDepsToComboBox(AllDepts);
+
+                var bindingList = new BindingList<string>(AllDepts);
+                var source = new BindingSource(bindingList, null);
+
+                //dispacher must be here
+                comboBox4.Invoke(new Action(() => {
+               
+                    comboBox4.DataSource = source;
+                }));
+
+                if (t.IsCompleted)
+                {
+                    Cursor.Current = Cursors.Default;
+                    Application.UseWaitCursor = false;
+                }
             });
             t.Start();
         }

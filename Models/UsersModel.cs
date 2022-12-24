@@ -26,10 +26,15 @@ namespace AccioInventory.Models
         [Browsable(false)]
         public int DepartmentId { get { return deptId; } set { deptId = value; } }
 
-        public string DepartmentName { get { return GetDeptName(deptId); } }
+        public string DepartmentName { get { return UsersModel.GetDeptName(deptId); } }
 
-
-        private string GetDeptName(int deptId)
+        /// <summary>
+        /// This function is used by many other classes main goal here to convert Id from [int] to [String] in fastway
+        /// we made it static to not create many objects in memory.
+        /// </summary>
+        /// <param name="deptId">int no that represents PK for real string name</param>
+        /// <returns></returns>
+        public static string GetDeptName(int deptId)
         {
             var myOpenedTunnel = AccioEasyHelpers.ReadParamsThenConnectToDB(false);
 

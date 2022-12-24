@@ -463,6 +463,7 @@
             this.comboBox4.Size = new System.Drawing.Size(121, 21);
             this.comboBox4.TabIndex = 17;
             this.comboBox4.Text = "--no data yet--";
+            this.comboBox4.DropDown += new System.EventHandler(this.comboBox4_DropDown);
             // 
             // UsersToolBoxView
             // 
