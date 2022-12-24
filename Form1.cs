@@ -1,4 +1,5 @@
 ﻿using AccioInventory.Helpers;
+using AccioInventory.Properties;
 using AccioInventory.UIViews;
 using System;
 using System.Drawing;
@@ -98,10 +99,12 @@ namespace AccioInventory
             loginForm.StartPosition = FormStartPosition.CenterScreen;
             loginForm.FormBorderStyle = FormBorderStyle.FixedDialog;
             loginForm.Text = "Welcome to accio system.";
-
+            var bmp = (new Bitmap(global::AccioInventory.Properties.Resources.acció_400x400_1, new Size(32, 32)));
+            IntPtr Hicon = bmp.GetHicon();
+            loginForm.Icon = Icon.FromHandle(Hicon);
 
             DialogResult dialogResult = loginForm.ShowDialog();
-
+            
 
 
 
