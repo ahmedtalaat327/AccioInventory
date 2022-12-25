@@ -83,6 +83,16 @@ namespace AccioInventory.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap deluser {
+            get {
+                object obj = ResourceManager.GetObject("deluser", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap edituser {
             get {
                 object obj = ResourceManager.GetObject("edituser", resourceCulture);
