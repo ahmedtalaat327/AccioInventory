@@ -46,6 +46,7 @@ namespace AccioInventory.ToolBoxUIViews
             AllPanels.Add(tableLayoutPanel2);
             AllPanels.Add(tableLayoutPanel3);
             AllPanels.Add(tableLayoutPanel4);
+            AllPanels.Add(tableLayoutPanel5);
         }
         /// <summary>
         /// Task func using managed and pooled threads to collect data while using UI 
@@ -215,8 +216,8 @@ namespace AccioInventory.ToolBoxUIViews
         private void tableLayoutPanel2_MouseEnter(object sender, EventArgs e)
         {
             DisableWhatPanelUsed(sender);
+            
             UsersPanelsEffected = UsersPanels.addPanel;
-          
         }
 
         /// <summary>
@@ -233,6 +234,21 @@ namespace AccioInventory.ToolBoxUIViews
       
             UsersPanelsEffected = UsersPanels.editPanel;
         }
+        /// <summary>
+        /// if mouse entered delete panel
+        /// </summary>
+        /// <param name="sender">current panel</param>
+        /// <param name="e"></param>
+        private void tableLayoutPanel5_MouseEnter(object sender, EventArgs e)
+        {
+            DisableWhatPanelUsed(sender);
+            //due to bug we will activate them manually ..
+            label18.Enabled = true;
+            textBox10.Enabled = true;
+
+            UsersPanelsEffected = UsersPanels.delPanel;
+        }
+
         /// <summary>
         /// Generic func to disable non-focused panel and re-focus the one we neeed.
         /// </summary>
@@ -377,6 +393,15 @@ namespace AccioInventory.ToolBoxUIViews
                 }
             });
             t.Start();
+        }
+        /// <summary>
+        /// update in edit section
+        /// </summary>
+        /// <param name="sender">button</param>
+        /// <param name="e">event</param>
+        private void button3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

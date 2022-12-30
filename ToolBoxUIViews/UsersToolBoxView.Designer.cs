@@ -40,6 +40,7 @@
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -50,6 +51,7 @@
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.label9 = new System.Windows.Forms.Label();
             this.textBox5 = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
@@ -67,11 +69,10 @@
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.label18 = new System.Windows.Forms.Label();
             this.textBox10 = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
+            this.label21 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -223,6 +224,16 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label8.Image = global::AccioInventory.Properties.Resources.adduser;
+            this.label8.Location = new System.Drawing.Point(275, 105);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(103, 45);
+            this.label8.TabIndex = 16;
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -341,6 +352,16 @@
             this.textBox5.Size = new System.Drawing.Size(66, 20);
             this.textBox5.TabIndex = 1;
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label10.Image = global::AccioInventory.Properties.Resources.edituser;
+            this.label10.Location = new System.Drawing.Point(256, 40);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(122, 40);
+            this.label10.TabIndex = 2;
+            // 
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(256, 3);
@@ -419,6 +440,7 @@
             this.button3.TabIndex = 11;
             this.button3.Text = "Update";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // textBox8
             // 
@@ -468,6 +490,7 @@
             this.tableLayoutPanel5.Controls.Add(this.label19, 2, 1);
             this.tableLayoutPanel5.Controls.Add(this.label20, 0, 1);
             this.tableLayoutPanel5.Controls.Add(this.button4, 1, 1);
+            this.tableLayoutPanel5.Controls.Add(this.label21, 0, 2);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel5.ForeColor = System.Drawing.SystemColors.Info;
             this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 502);
@@ -478,6 +501,7 @@
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
             this.tableLayoutPanel5.Size = new System.Drawing.Size(381, 245);
             this.tableLayoutPanel5.TabIndex = 2;
+            this.tableLayoutPanel5.MouseEnter += new System.EventHandler(this.tableLayoutPanel5_MouseEnter);
             // 
             // label17
             // 
@@ -489,7 +513,7 @@
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(120, 45);
             this.label17.TabIndex = 0;
-            this.label17.Text = "Put Id to delete:";
+            this.label17.Text = "Put Id to delete:\r\n(Search only by ID)";
             // 
             // tableLayoutPanel6
             // 
@@ -524,26 +548,6 @@
             this.textBox10.Size = new System.Drawing.Size(73, 20);
             this.textBox10.TabIndex = 1;
             // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label8.Image = global::AccioInventory.Properties.Resources.adduser;
-            this.label8.Location = new System.Drawing.Point(275, 105);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(103, 45);
-            this.label8.TabIndex = 16;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label10.Image = global::AccioInventory.Properties.Resources.edituser;
-            this.label10.Location = new System.Drawing.Point(256, 40);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(122, 40);
-            this.label10.TabIndex = 2;
-            // 
             // label19
             // 
             this.label19.AutoSize = true;
@@ -574,6 +578,18 @@
             this.button4.TabIndex = 4;
             this.button4.Text = "Delete";
             this.button4.UseVisualStyleBackColor = true;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.BackColor = System.Drawing.SystemColors.MenuBar;
+            this.label21.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label21.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.label21.Location = new System.Drawing.Point(3, 90);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(120, 13);
+            this.label21.TabIndex = 5;
+            this.label21.Text = "Date: 25/12/2022";
             // 
             // UsersToolBoxView
             // 
@@ -643,5 +659,6 @@
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Label label21;
     }
 }
