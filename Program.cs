@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AccioInventory.Helpers;
+using System;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -12,11 +13,10 @@ namespace AccioInventory
         [STAThread]
         static void Main()
         {
+            //usuall visual and render effects fixes..
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //check if the thread of the app is already running avoid multiple exe at same time!
-
-            //we should test if data file is there or not if not let there be a message telling the user !
             PragmaChecker.UniqueEXERun();
           
             
@@ -31,6 +31,13 @@ namespace AccioInventory
             {
                 if (mutex.WaitOne(0, false))
                 {
+                    //we should test if data file is there or not if not let there be a message telling the user !
+                    try
+                    {
+                        var data = AccioEasyHelpers.ReadTxTFiles(AccioEasyHelpers.MeExistanceLocation().Substring(0, AccioEasyHelpers.MeExistanceLocation().Length - ("AccioInventory.exe").Length) + "data\\params.info");
+                    }
+                    catch { MessageBox.Show("The data file is missing or files in there not exist."); }
+
                     //run the actual class [represents form main form]
                     Application.Run(new Accio());
                 }
