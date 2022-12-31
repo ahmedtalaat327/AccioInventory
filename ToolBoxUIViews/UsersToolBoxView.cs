@@ -401,7 +401,9 @@ namespace AccioInventory.ToolBoxUIViews
         /// <param name="e">event</param>
         private void button3_Click(object sender, EventArgs e)
         {
-
+            //show collected new data
+            Form showUpdatedDetalis = new Form();
+            
         }
     }
 }
