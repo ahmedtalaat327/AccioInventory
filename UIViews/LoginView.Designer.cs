@@ -91,7 +91,7 @@
             this.tableLayoutPanel2.ColumnCount = 3;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 36.63968F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 63.36032F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 124F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 125F));
             this.tableLayoutPanel2.Controls.Add(this.textBox2, 1, 1);
             this.tableLayoutPanel2.Controls.Add(this.label2, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.label3, 0, 1);
@@ -117,7 +117,7 @@
             this.textBox2.Margin = new System.Windows.Forms.Padding(3, 3, 0, 3);
             this.textBox2.Name = "textBox2";
             this.textBox2.PasswordChar = '●';
-            this.textBox2.Size = new System.Drawing.Size(156, 20);
+            this.textBox2.Size = new System.Drawing.Size(155, 20);
             this.textBox2.TabIndex = 3;
             // 
             // label2
@@ -154,7 +154,7 @@
             this.textBox1.Location = new System.Drawing.Point(94, 3);
             this.textBox1.Margin = new System.Windows.Forms.Padding(3, 3, 0, 3);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(156, 20);
+            this.textBox1.Size = new System.Drawing.Size(155, 20);
             this.textBox1.TabIndex = 2;
             // 
             // label7
@@ -162,9 +162,9 @@
             this.label7.AutoSize = true;
             this.label7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label7.Image = ((System.Drawing.Image)(resources.GetObject("label7.Image")));
-            this.label7.Location = new System.Drawing.Point(253, 0);
+            this.label7.Location = new System.Drawing.Point(252, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(119, 32);
+            this.label7.Size = new System.Drawing.Size(120, 32);
             this.label7.TabIndex = 4;
             // 
             // label8
@@ -172,9 +172,9 @@
             this.label8.AutoSize = true;
             this.label8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label8.Image = ((System.Drawing.Image)(resources.GetObject("label8.Image")));
-            this.label8.Location = new System.Drawing.Point(253, 32);
+            this.label8.Location = new System.Drawing.Point(252, 32);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(119, 32);
+            this.label8.Size = new System.Drawing.Size(120, 32);
             this.label8.TabIndex = 5;
             // 
             // tableLayoutPanel3

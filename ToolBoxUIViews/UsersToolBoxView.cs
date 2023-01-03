@@ -1,11 +1,13 @@
 ﻿using AccioInventory.DBConnection;
 using AccioInventory.Helpers;
 using AccioInventory.Models;
+using AccioInventory.ResultsUIViews;
 using AccioInventory.UIViews;
 using Oracle.ManagedDataAccess.Client;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Drawing;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -402,8 +404,22 @@ namespace AccioInventory.ToolBoxUIViews
         private void button3_Click(object sender, EventArgs e)
         {
             //show collected new data
+            var context = new UsersEditConfirmView() ;
+            context.Dock = DockStyle.Fill;
+            context.Location = new Point();
             Form showUpdatedDetalis = new Form();
-            
+            showUpdatedDetalis.Size = context.Size;
+            showUpdatedDetalis.Controls.Add(context);
+            showUpdatedDetalis.MinimizeBox = false;
+            showUpdatedDetalis.MaximizeBox = false;
+            var bmp = (new Bitmap(global::AccioInventory.Properties.Resources.acció_400x400_1, new Size(32, 32)));
+            IntPtr Hicon = bmp.GetHicon();
+            showUpdatedDetalis.Icon = Icon.FromHandle(Hicon);
+            showUpdatedDetalis.Text = "Update Confirmation.";
+            showUpdatedDetalis.StartPosition = FormStartPosition.CenterScreen;
+            showUpdatedDetalis.Show();
+            showUpdatedDetalis.TopMost = true;
+         
         }
     }
 }

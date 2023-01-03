@@ -410,7 +410,7 @@
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(120, 40);
             this.label14.TabIndex = 7;
-            this.label14.Text = "Preivilage";
+            this.label14.Text = "Privilege";
             // 
             // label15
             // 
